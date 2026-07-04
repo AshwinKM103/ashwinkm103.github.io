@@ -1,0 +1,14 @@
+{% comment %} One publication rendered as a Basically Basic entry card. Expects `post`. {% endcomment %}
+<article class="entry">
+  <h3 class="entry-title"><a href="{{ post.url | relative_url }}" rel="bookmark">{{ post.title }}</a></h3>
+  {% if post.venue or post.date %}
+    <p class="entry-academic-meta">
+      {%- if post.venue %}{{ post.venue }}{% endif -%}
+      {%- if post.venue and post.date %} &middot; {% endif -%}
+      {%- if post.date %}{{ post.date | date: "%Y" }}{% endif -%}
+    </p>
+  {% endif %}
+  {% if post.excerpt %}<div class="entry-excerpt">{{ post.excerpt | markdownify }}</div>{% endif %}
+  {% if post.citation %}<p class="entry-citation">{{ post.citation | markdownify | strip_html }}</p>{% endif %}
+  {% include publication-links.html %}
+</article>

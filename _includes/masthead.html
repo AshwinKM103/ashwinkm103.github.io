@@ -1,0 +1,48 @@
+{% assign site_logo = site.logo | relative_url %}
+
+<header id="masthead">
+  <div class="inner">
+    <div class="title-area">
+      {% if page.url == '/' %}
+        <h1 class="site-title">
+          <a href="{{ '/' | relative_url }}">
+            {% if site.logo %}<img src="{{ site_logo }}" alt="" class="site-logo">{% endif %}
+            <span>{{ site.title | escape }}</span>
+          </a>
+        </h1>
+      {% else %}
+        <p class="site-title">
+          <a href="{{ '/' | relative_url }}">
+            {% if site.logo %}<img src="{{ site_logo }}" alt="" class="site-logo">{% endif %}
+            <span>{{ site.title | escape }}</span>
+          </a>
+        </p>
+      {% endif %}
+
+      <button id="theme-toggle" class="theme-toggle" type="button" title="Toggle light/dark theme" aria-label="Toggle light/dark theme">
+        <i id="theme-icon" class="fas fa-sun" aria-hidden="true"></i>
+      </button>
+
+      {% if site.accent_picker %}
+      {%- comment -%}
+        Accent-color picker (dev/preview tool). The 6 swatches are the accent colors of
+        Basically Basic's original skins (default/night/plum/sea/soft/steel). Set
+        `accent_picker: false` in _config.yml for production; the site then uses the fixed
+        accent in _sass/theme/_default.scss.
+      {%- endcomment -%}
+      <div class="accent-picker" role="group" aria-label="Accent color">
+        <button class="accent-swatch" type="button" data-accent="#00838a" style="--sw:#00838a" title="Teal (default)" aria-label="Teal accent"></button>
+        <button class="accent-swatch" type="button" data-accent="#00adb5" style="--sw:#00adb5" title="Cyan (night)" aria-label="Cyan accent"></button>
+        <button class="accent-swatch" type="button" data-accent="#35bcbf" style="--sw:#35bcbf" title="Sea" aria-label="Sea accent"></button>
+        <button class="accent-swatch" type="button" data-accent="#951556" style="--sw:#951556" title="Plum" aria-label="Plum accent"></button>
+        <button class="accent-swatch" type="button" data-accent="#e85482" style="--sw:#e85482" title="Rose (soft)" aria-label="Rose accent"></button>
+        <button class="accent-swatch" type="button" data-accent="#d72323" style="--sw:#d72323" title="Red (steel)" aria-label="Red accent"></button>
+        <label class="accent-custom" title="Custom color">
+          <input type="color" id="accent-input" value="#00838a" aria-label="Custom accent color">
+        </label>
+        <button id="accent-reset" class="accent-reset" type="button" title="Reset to default accent" aria-label="Reset accent">&times;</button>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</header>

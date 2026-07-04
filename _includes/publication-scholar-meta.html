@@ -1,0 +1,20 @@
+{% comment %}
+  Google Scholar (Highwire Press) citation meta tags for publication detail pages, so papers
+  are discoverable/indexable by Google Scholar. Emitted only on the publications collection.
+  Uses an optional `authors` front-matter list (one <meta> per author); falls back to the
+  site author. Recognizes optional `venue`, `paperurl`, and `doi` fields.
+{% endcomment %}
+{% if page.collection == 'publications' %}
+  <meta name="citation_title" content="{{ page.title | strip_html | escape }}">
+  {% if page.authors %}
+    {% for author in page.authors %}
+      <meta name="citation_author" content="{{ author | escape }}">
+    {% endfor %}
+  {% else %}
+    <meta name="citation_author" content="{{ site.author.name | default: site.name | escape }}">
+  {% endif %}
+  {% if page.date %}<meta name="citation_publication_date" content="{{ page.date | date: '%Y/%m/%d' }}">{% endif %}
+  {% if page.venue %}<meta name="citation_journal_title" content="{{ page.venue | strip_html | escape }}">{% endif %}
+  {% if page.doi %}<meta name="citation_doi" content="{{ page.doi | remove: 'https://doi.org/' }}">{% endif %}
+  {% if page.paperurl %}<meta name="citation_pdf_url" content="{% if page.paperurl contains '://' %}{{ page.paperurl }}{% else %}{{ page.paperurl | absolute_url }}{% endif %}">{% endif %}
+{% endif %}

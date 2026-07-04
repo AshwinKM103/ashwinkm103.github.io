@@ -1,0 +1,22 @@
+---
+# Front matter (required) so Jekyll compiles this SCSS. Output: /assets/css/main.css
+---
+
+@charset "utf-8";
+
+/*
+ * Hybrid stylesheet: Basically Basic design system + Academic Pages runtime
+ * light/dark theming and academic components.
+ *
+ * Import order matters:
+ *   1. theme skin/bridge  -> rebinds Basically Basic color vars to CSS custom
+ *      properties (must precede the manifest so its `!default` tint() lines are
+ *      skipped). Skin chosen via `site_theme` in _config.yml.
+ *   2. basically-basic     -> Michael Rose's theme core + components.
+ *   3. academic            -> Academic Pages additions (publications, author
+ *      profile, theme toggle) restyled onto the design system.
+ */
+
+@import "theme/{{ site.site_theme | default: 'default' }}";
+@import "basically-basic";
+@import "academic";

@@ -1,0 +1,63 @@
+{% comment %}
+  Academic author profile sidebar. Renders site.author.* (avatar, bio, contact,
+  academic + social links). Icons via Academicons (ai) + Font Awesome (fa*).
+  Styled by .author-* rules in _sass/_academic.scss.
+{% endcomment %}
+{% assign a = site.author %}
+
+<div class="author-profile">
+  {% if a.avatar %}
+    <div class="author-avatar">
+      {% if a.avatar contains '://' %}
+        <img src="{{ a.avatar }}" alt="{{ a.name | default: site.title | escape }}">
+      {% else %}
+        <img src="{{ a.avatar | prepend: '/images/' | relative_url }}" alt="{{ a.name | default: site.title | escape }}">
+      {% endif %}
+    </div>
+  {% endif %}
+
+  {% if a.name %}<h3 class="author-name">{{ a.name }}</h3>{% endif %}
+  {% if a.pronouns %}<p class="author-pronouns">{{ a.pronouns }}</p>{% endif %}
+  {% if a.bio %}<p class="author-bio">{{ a.bio | markdownify | strip_html }}</p>{% endif %}
+
+  <div class="author-meta">
+    {% if a.employer %}<p><span class="icon"><i class="fas fa-university" aria-hidden="true"></i></span> {{ a.employer }}</p>{% endif %}
+    {% if a.location %}<p><span class="icon"><i class="fas fa-map-marker-alt" aria-hidden="true"></i></span> {{ a.location }}</p>{% endif %}
+  </div>
+
+  <ul class="author-links">
+    {% if a.email %}
+      <li><a href="mailto:{{ a.email }}"><span class="icon"><i class="fas fa-envelope" aria-hidden="true"></i></span>Email</a></li>
+    {% endif %}
+    {% if a.googlescholar %}
+      <li><a href="{{ a.googlescholar }}" rel="me nofollow noopener noreferrer"><span class="icon"><i class="ai ai-google-scholar" aria-hidden="true"></i></span>Google Scholar</a></li>
+    {% endif %}
+    {% if a.orcid %}
+      <li><a href="{{ a.orcid }}" rel="me nofollow noopener noreferrer"><span class="icon"><i class="ai ai-orcid" aria-hidden="true"></i></span>ORCID</a></li>
+    {% endif %}
+    {% if a.arxiv %}
+      <li><a href="{{ a.arxiv }}" rel="me nofollow noopener noreferrer"><span class="icon"><i class="ai ai-arxiv" aria-hidden="true"></i></span>arXiv</a></li>
+    {% endif %}
+    {% if a.semantic %}
+      <li><a href="{{ a.semantic }}" rel="me nofollow noopener noreferrer"><span class="icon"><i class="ai ai-semantic-scholar" aria-hidden="true"></i></span>Semantic Scholar</a></li>
+    {% endif %}
+    {% if a.researchgate %}
+      <li><a href="{{ a.researchgate }}" rel="me nofollow noopener noreferrer"><span class="icon"><i class="ai ai-researchgate" aria-hidden="true"></i></span>ResearchGate</a></li>
+    {% endif %}
+    {% if a.pubmed %}
+      <li><a href="{{ a.pubmed }}" rel="me nofollow noopener noreferrer"><span class="icon"><i class="ai ai-pubmed" aria-hidden="true"></i></span>PubMed</a></li>
+    {% endif %}
+    {% if a.github %}
+      <li><a href="https://github.com/{{ a.github }}" rel="me nofollow noopener noreferrer"><span class="icon"><i class="fab fa-github" aria-hidden="true"></i></span>GitHub</a></li>
+    {% endif %}
+    {% if a.linkedin %}
+      <li><a href="https://linkedin.com/in/{{ a.linkedin }}" rel="me nofollow noopener noreferrer"><span class="icon"><i class="fab fa-linkedin" aria-hidden="true"></i></span>LinkedIn</a></li>
+    {% endif %}
+    {% if a.twitter %}
+      <li><a href="https://twitter.com/{{ a.twitter }}" rel="me nofollow noopener noreferrer"><span class="icon"><i class="fab fa-x-twitter" aria-hidden="true"></i></span>Twitter / X</a></li>
+    {% endif %}
+    {% if a.bluesky %}
+      <li><a href="https://{{ a.bluesky }}" rel="me nofollow noopener noreferrer"><span class="icon"><i class="fab fa-bluesky" aria-hidden="true"></i></span>Bluesky</a></li>
+    {% endif %}
+  </ul>
+</div>

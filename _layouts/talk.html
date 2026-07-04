@@ -1,0 +1,23 @@
+---
+# Single talk detail page.
+layout: default
+---
+
+{% include page-intro.html %}
+
+<main id="main" class="page-content" aria-label="Content">
+  <div class="inner">
+    <article class="entry-wrap">
+      <p class="entry-academic-meta">
+        {%- if page.type %}{{ page.type }}{% endif -%}
+        {%- if page.type and page.venue %} &middot; {% endif -%}
+        {%- if page.venue %}{{ page.venue }}{% endif -%}
+        {%- if page.location %} &middot; {{ page.location }}{% endif -%}
+        {%- if page.date %} &middot; {{ page.date | date: "%B %-d, %Y" }}{% endif -%}
+      </p>
+      <div class="entry-content">
+        {{ content }}
+      </div>
+    </article>
+  </div>
+</main>

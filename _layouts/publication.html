@@ -1,0 +1,31 @@
+---
+# Single publication detail page.
+layout: default
+---
+
+{% include page-intro.html %}
+
+<main id="main" class="page-content" aria-label="Content">
+  <div class="inner">
+    <article class="entry-wrap">
+      {% if page.venue or page.date %}
+        <p class="entry-academic-meta">
+          {%- if page.venue %}Published in {{ page.venue }}{% endif -%}
+          {%- if page.venue and page.date %}, {% endif -%}
+          {%- if page.date %}{{ page.date | date: "%Y" }}{% endif -%}
+        </p>
+      {% endif %}
+
+      {% assign post = page %}
+      {% include publication-links.html %}
+
+      <div class="entry-content">
+        {{ content }}
+      </div>
+
+      {% if page.citation %}
+        <p class="entry-citation">Recommended citation: {{ page.citation | markdownify | strip_html }}</p>
+      {% endif %}
+    </article>
+  </div>
+</main>

@@ -1,0 +1,242 @@
+/* ==========================================================================
+   ACADEMIC ADDITIONS
+   Academic Pages features (publications, talks, author profile, theme toggle)
+   restyled onto Basically Basic's design language. Colors use the bridged
+   --global-* custom properties so light/dark both work.
+   Imported last in assets/css/main.scss.
+   ========================================================================== */
+
+/* --- Grouped collection sections (publications / talks) --- */
+.collection-group {
+  margin-bottom: 2em;
+
+  & + .collection-group {
+    padding-top: 1em;
+    border-top: 1px solid var(--global-border-color);
+  }
+}
+
+.collection-group__title {
+  margin-bottom: 0.5em;
+  color: var(--global-accent-color);
+}
+
+/* --- Academic metadata line (venue • date • type) --- */
+.entry-academic-meta {
+  margin: 0.25em 0 0.5em;
+  color: var(--global-text-color-light);
+  font-style: italic;
+}
+
+.entry-citation {
+  margin: 0.25em 0 0.75em;
+  color: var(--global-text-color-light);
+  font-size: 0.9em;
+}
+
+/* --- Button row (paper / slides / bibtex / code) --- */
+.entry-links {
+  margin-top: 0.5em;
+
+  .btn {
+    margin: 0 0.35em 0.35em 0;
+  }
+}
+
+/* --- Author profile sidebar (kept from Academic Pages, restyled) --- */
+.author-profile {
+  text-align: center;
+
+  @include breakpoint($medium) {
+    text-align: left;
+  }
+}
+
+.author-avatar img {
+  max-width: 175px;
+  border-radius: 50%;
+}
+
+.author-name {
+  margin: 0.5em 0 0.25em;
+}
+
+.author-bio {
+  color: var(--global-text-color-light);
+  font-size: 0.9em;
+}
+
+.author-meta {
+  margin: 0.5em 0;
+  color: var(--global-text-color-light);
+  font-size: 0.85em;
+
+  .icon {
+    width: 1.25em;
+    text-align: center;
+  }
+}
+
+.author-links {
+  padding: 0;
+  list-style: none;
+
+  li {
+    margin-bottom: 0.35em;
+  }
+
+  a {
+    color: var(--global-text-color);
+
+    &:hover {
+      color: var(--global-accent-color);
+    }
+  }
+
+  .icon,
+  .ai,
+  .fab,
+  .fas {
+    width: 1.5em;
+    text-align: center;
+    margin-right: 0.35em;
+    color: var(--global-text-color-light);
+  }
+}
+
+/* Two-column layout: author sidebar + content (wide screens only) */
+.layout--academic {
+  .page-wrap {
+    @include breakpoint($large) {
+      display: flex;
+      gap: 2em;
+      align-items: flex-start;
+    }
+  }
+
+  .author-column {
+    @include breakpoint($large) {
+      flex: 0 0 240px;
+      position: sticky;
+      top: 2em;
+    }
+  }
+
+  .content-column {
+    @include breakpoint($large) {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+  }
+}
+
+/* --- Light/dark theme toggle button (in the masthead/menu) --- */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25em;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-size: 1em;
+  line-height: 1;
+
+  &:hover {
+    color: var(--global-accent-color);
+  }
+}
+
+/* --- Accent-color picker (preview tool; hidden when accent_picker: false) --- */
+.accent-picker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  margin-left: 0.6em;
+  vertical-align: middle;
+}
+
+.accent-swatch {
+  width: 1em;
+  height: 1em;
+  padding: 0;
+  border: 1px solid var(--global-border-color);
+  border-radius: 50%;
+  background: var(--sw);
+  cursor: pointer;
+  transition: transform 0.1s ease;
+
+  &:hover,
+  &:focus-visible {
+    transform: scale(1.25);
+    outline: none;
+  }
+}
+
+.accent-custom {
+  display: inline-flex;
+  cursor: pointer;
+
+  input[type="color"] {
+    width: 1.15em;
+    height: 1.15em;
+    padding: 0;
+    border: 1px solid var(--global-border-color);
+    border-radius: 50%;
+    background: none;
+    cursor: pointer;
+
+    &::-webkit-color-swatch-wrapper { padding: 0; }
+    &::-webkit-color-swatch { border: 0; border-radius: 50%; }
+    &::-moz-color-swatch { border: 0; border-radius: 50%; }
+  }
+}
+
+.accent-reset {
+  padding: 0 0.2em;
+  border: 0;
+  background: transparent;
+  color: var(--global-text-color-light);
+  cursor: pointer;
+  font-size: 1.1em;
+  line-height: 1;
+
+  &:hover { color: var(--global-accent-color); }
+}
+
+/* --- Legacy Academic Pages class aliases (taxonomy/archive demo pages,
+       comments system) so leftover markup renders on the new design. --- */
+.archive__subtitle {
+  margin: 1.5em 0 0.5em;
+  padding-bottom: 0.25em;
+  color: var(--global-accent-color);
+  border-bottom: 1px solid var(--global-border-color);
+}
+
+.archive__item {
+  margin-bottom: 1.5em;
+}
+
+.archive__item-title {
+  margin-top: 0;
+  font-size: 1.1em;
+}
+
+.archive__item-excerpt {
+  color: var(--global-text-color-light);
+}
+
+.page__comments-title {
+  margin-top: 1.5em;
+}
+
+/* --- Notices (ported from Academic Pages, simplified) --- */
+.notice {
+  margin: 1.5em 0;
+  padding: 1em;
+  border-radius: $border-radius;
+  border: 1px solid var(--global-border-color);
+  background-color: var(--global-code-bg-color);
+  font-size: 0.9em;
+}

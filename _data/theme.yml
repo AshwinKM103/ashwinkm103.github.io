@@ -1,0 +1,50 @@
+# Appearance / i18n surface adopted from Basically Basic.
+# Consumed by the re-templated includes (masthead, navigation, entry, read-time,
+# search, cv/*). Navigation itself is driven by _data/navigation.yml (Academic
+# Pages model), NOT navigation_pages here.
+
+# Theme skin is selected in _config.yml via `site_theme` and bridged to
+# light/dark CSS custom properties (see _sass/theme/_default_light|dark.scss).
+
+# Theme UI text
+t:
+  skip_links: "Skip links"
+  skip_primary_nav: "Skip to primary navigation"
+  skip_content: "Skip to content"
+  skip_footer: "Skip to footer"
+  menu: "Menu"
+  search: "Search"
+  site_search: "Site Search"
+  results_found: "Result(s) found"
+  search_placeholder_text: "Enter your search term..."
+  home: "Home"
+  newer: "Newer"
+  older: "Older"
+  email: "Email"
+  subscribe: "Subscribe"
+  read_more: "Read more"
+  posts: "Posts"
+  page: "Page"
+  of: "of"
+  min_read: "min read"
+  present: "Present"
+  cv_awards: "Awards"
+  cv_summary_contact: "Contact"
+  cv_summary_contact_email: "Email"
+  cv_summary_contact_phone: "Phone"
+  cv_summary_contact_website: "Website"
+  cv_location: "Location"
+  cv_education: "Education"
+  cv_education_courses: "Courses"
+  cv_interests: "Interests"
+  cv_languages: "Languages"
+  cv_publications: "Publications"
+  cv_references: "References"
+  cv_skills: "Skills"
+  cv_volunteer: "Volunteer"
+  cv_work: "Work"
+
+# Google Fonts (Basically Basic's signature typography). Loaded in _includes/head.html.
+google_fonts:
+  - name: "Fira Sans"
+    weights: "400,400i,600,600i"

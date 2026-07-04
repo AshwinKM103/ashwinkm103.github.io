@@ -1,0 +1,23 @@
+# Ignore the contents of the _site directory and other cache directories
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# Ignore the directory for local files during development
+local/
+
+# Gemfile.lock IS committed for reproducible GitHub Actions builds.
+
+# Ignore files created by npm
+node_modules
+
+# Ignore the vendor file at root level and bundle for alternative installation
+/vendor/
+.bundle/
+
+# Ignore folders related to IDEs
+.vscode/
+
+# Ignore files created by MacOS
+.DS_Store

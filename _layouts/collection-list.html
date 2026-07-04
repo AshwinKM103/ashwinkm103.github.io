@@ -1,0 +1,30 @@
+---
+# Listing layout for talks and teaching. Set `collection:` in the page front
+# matter (e.g. collection: talks). Renders newest-first academic entry cards.
+layout: default
+---
+
+{% include page-intro.html %}
+
+<main id="main" class="page-content" aria-label="Content">
+  <div class="inner">
+    <div class="layout--academic">
+      <div class="page-wrap">
+        {% if page.author_profile != false %}
+          <aside class="author-column">
+            {% include author-profile.html %}
+          </aside>
+        {% endif %}
+        <div class="content-column">
+          <div class="entry-content">
+            {{ content }}
+          </div>
+          <section class="collection-group">
+            {% assign items = site[page.collection] | sort: "date" | reverse %}
+            {% for post in items %}{% include collection-entry.html %}{% endfor %}
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

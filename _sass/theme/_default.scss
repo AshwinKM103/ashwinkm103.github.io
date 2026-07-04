@@ -1,0 +1,86 @@
+/* ==========================================================================
+   THEME SKIN + DARK-MODE BRIDGE  (Academic Pages runtime theming ×
+   Basically Basic design tokens)
+   --------------------------------------------------------------------------
+   Basically Basic bakes colors in at compile time (Sass vars + tint()/shade()).
+   Academic Pages themes at runtime via CSS custom properties toggled by
+   `html[data-theme]`. This partial bridges the two:
+
+     1. It is imported in assets/css/main.scss BEFORE the basically-basic
+        manifest, so these plain (non-!default) assignments win the cascade and
+        the manifest's `$code-background-color`/`$border-color: tint(...)` lines
+        are skipped (never executing tint() on a var()).
+     2. Basically Basic's theme color Sass variables are rebound to var(--global-*).
+     3. The actual colors live in CSS custom properties for light + dark, so the
+        runtime toggle (assets/js/_main.js) and prefers-color-scheme work.
+
+   Component partials that previously called tint()/shade()/lighten() on these
+   colors have been patched to reference the --global-*-light/-lighter/-dark
+   tokens defined here (grep for "bridge" in _sass/basically-basic/*.scss).
+   ========================================================================== */
+
+/* --- Rebind Basically Basic color vars to custom properties (compile time) --- */
+$base-color: var(--global-base-color);
+$text-color: var(--global-text-color);
+$accent-color: var(--global-accent-color);
+$background-color: var(--global-bg-color);
+$code-background-color: var(--global-code-bg-color);
+$border-color: var(--global-border-color);
+$sidebar-background-color: var(--global-sidebar-bg-color);
+
+/* --- Accent shade derivation ---------------------------------------------
+   The accent's -light / -dark / -alpha variants are DERIVED from a single
+   --global-accent-color via color-mix(). This is what makes the runtime
+   accent-color picker (assets/js/main.js) work: setting one variable on
+   :root updates every shade automatically, in both light and dark mode.
+   To LOCK a fixed accent for deployment, just change the two
+   --global-accent-color values below and set `accent_picker: false` in
+   _config.yml. --------------------------------------------------------- */
+
+/* --- Light palette (default) --- */
+:root {
+  --global-base-color: #393e46;
+  --global-text-color: #181c22;
+  --global-text-color-light: #5c6270;
+  --global-text-color-lighter: #8a909c;
+  --global-text-color-lightest: #a7adb8;
+  --global-accent-color: #00838a; /* teal — the fixed default accent */
+  --global-accent-color-light: color-mix(in srgb, var(--global-accent-color), white 25%);
+  --global-accent-color-dark: color-mix(in srgb, var(--global-accent-color), black 18%);
+  --global-accent-color-alpha: color-mix(in srgb, var(--global-accent-color) 22%, transparent);
+  --global-bg-color: #ffffff;
+  --global-sidebar-bg-color: #ffffff;
+  --global-code-bg-color: #f4f5f6;
+  --global-border-color: #d8dade;
+  color-scheme: light;
+}
+
+/* --- Dark palette (mixin so it can be used inside @media) --- */
+@mixin dark-palette {
+  --global-base-color: #cdd2da;
+  --global-text-color: #e6e9ee;
+  --global-text-color-light: #aeb4bf;
+  --global-text-color-lighter: #7f8593;
+  --global-text-color-lightest: #656b78;
+  --global-accent-color: #4ecdc4; /* teal (brightened for dark bg) */
+  --global-accent-color-light: color-mix(in srgb, var(--global-accent-color), white 22%);
+  --global-accent-color-dark: color-mix(in srgb, var(--global-accent-color), black 15%);
+  --global-accent-color-alpha: color-mix(in srgb, var(--global-accent-color) 20%, transparent);
+  --global-bg-color: #14171c;
+  --global-sidebar-bg-color: #1b1f26;
+  --global-code-bg-color: #1e2228;
+  --global-border-color: #2c313a;
+  color-scheme: dark;
+}
+
+/* Explicit user choice via the theme toggle wins. */
+html[data-theme="dark"] {
+  @include dark-palette;
+}
+
+/* Honor the OS preference until the user makes an explicit choice. */
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) {
+    @include dark-palette;
+  }
+}

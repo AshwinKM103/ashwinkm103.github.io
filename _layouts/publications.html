@@ -1,0 +1,42 @@
+---
+layout: default
+---
+
+{% include page-intro.html %}
+
+<main id="main" class="page-content" aria-label="Content">
+  <div class="inner">
+    <div class="layout--academic">
+      <div class="page-wrap">
+        {% if page.author_profile != false %}
+          <aside class="author-column">
+            {% include author-profile.html %}
+          </aside>
+        {% endif %}
+        <div class="content-column">
+          <div class="entry-content">
+            {{ content }}
+          </div>
+
+          {% if site.publication_category %}
+            {% for category in site.publication_category %}
+              {% assign cat_key = category[0] %}
+              {% assign cat_pubs = site.publications | where: "category", cat_key | sort: "date" | reverse %}
+              {% if cat_pubs.size > 0 %}
+                <section class="collection-group">
+                  <h2 class="collection-group__title">{{ category[1].title }}</h2>
+                  {% for post in cat_pubs %}{% include publication-entry.html %}{% endfor %}
+                </section>
+              {% endif %}
+            {% endfor %}
+          {% else %}
+            <section class="collection-group">
+              {% assign pubs = site.publications | sort: "date" | reverse %}
+              {% for post in pubs %}{% include publication-entry.html %}{% endfor %}
+            </section>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

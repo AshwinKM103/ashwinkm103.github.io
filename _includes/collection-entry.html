@@ -1,0 +1,12 @@
+{% comment %} One talk/teaching item rendered as a Basically Basic entry card. Expects `post`. {% endcomment %}
+<article class="entry">
+  <h3 class="entry-title"><a href="{{ post.url | relative_url }}" rel="bookmark">{{ post.title }}</a></h3>
+  <p class="entry-academic-meta">
+    {%- if post.type %}{{ post.type }}{% endif -%}
+    {%- if post.type and post.venue %} &middot; {% endif -%}
+    {%- if post.venue %}{{ post.venue }}{% endif -%}
+    {%- if post.location %} &middot; {{ post.location }}{% endif -%}
+    {%- if post.date %} &middot; {{ post.date | date: "%B %-d, %Y" }}{% endif -%}
+  </p>
+  {% if post.excerpt %}<div class="entry-excerpt">{{ post.excerpt | markdownify }}</div>{% endif %}
+</article>

@@ -1,0 +1,26 @@
+---
+layout: default
+---
+
+{% include page-intro.html %}
+
+<main id="main" class="page-content" aria-label="Content">
+  <div class="inner">
+    <div class="layout--academic">
+      <div class="page-wrap">
+        {% if page.author_profile != false %}
+          <aside class="author-column">
+            {% include author-profile.html %}
+          </aside>
+        {% endif %}
+        <div class="content-column">
+          <article class="entry-wrap">
+            <div class="entry-content">
+              {{ content }}
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
