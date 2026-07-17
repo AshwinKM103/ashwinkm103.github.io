@@ -5,7 +5,7 @@ section: research
 order: 1
 monogram: "FCL"
 summary: "Unrolls bi-level meta-learning into **three temporally-independent stages** so domain adaptation stops fighting itself. On Qwen2.5 it beats MAML in- and out-of-domain with **6.5× sparser** adaptations."
-banner_media: /images/portfolio/focal.png
+banner_media: /images/portfolio/focal.webp
 tech: ["LLMs", "Meta-Learning", "LoRA", "Hypernetworks", "RL"]
 meta: "Supervised by Prof. Shalabh Bhatnagar · IISc · under review at ICML"
 links:

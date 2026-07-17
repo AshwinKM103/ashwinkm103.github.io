@@ -18,7 +18,11 @@ As an **ML Research Engineer at Zenteiq AI** (Computational Mathematics Group, I
 whether human-inspired *learn–master–teach* training pipelines can improve the mathematical
 reasoning of LLMs — work now under review at ICLR 2026 — and I have interned at the **Energy
 Informatics Lab, IISc** on anomaly detection for electricity-consumption time series. Both are
-written up under [talks](/talks/) and [projects](/portfolio/#internships).
+written up under [internships](/internships/).
+
+## Work Experience
+
+{% include work-experience.html %}
 
 ## Skills
 

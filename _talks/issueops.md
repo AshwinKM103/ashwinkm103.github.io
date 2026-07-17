@@ -8,7 +8,7 @@ venue: "DS 252: Introduction to Cloud Computing, IISc"
 date: 2025-11-01
 monogram: "IO"
 summary: "A **fully serverless** GitHub App that triages issues end-to-end on AWS — spam filtering, classification, and **availability-aware assignment** via Bedrock models — at roughly **$2.5–3 per 1,000 issues**."
-banner_media: /images/portfolio/issueops.png
+banner_media: /images/portfolio/issueops.webp
 tech: ["AWS Lambda", "Bedrock", "DynamoDB", "Multi-Agent", "Serverless"]
 meta: "DS 252: Cloud Computing, IISc · serverless multi-agent · ~$2.5–3 / 1k issues"
 links:

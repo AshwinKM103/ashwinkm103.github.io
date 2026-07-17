@@ -8,8 +8,9 @@ venue: "International Conference on Applied Artificial Intelligence and Scientif
 date: 2025-01-01
 location: "India"
 monogram: "MX"
+internship: true
 summary: "A **learn → master → teach** framework (LMT²) grounded in cognitive science, shipped as **MentorX** on Llama-3.1-8B. Staged tuning lifts accuracy **23.9% → 32.2%**; piloted with ~50 government-school students."
-banner_media: /images/portfolio/mentorx.png
+banner_media: /images/portfolio/mentorx.webp
 tech: ["LLM Post-Training", "RL", "Llama-3.1", "Pedagogical AI"]
 meta: "Lead Speaker · Intl. Conf. on Applied AI & Scientific ML · under review at ICLR 2026"
 links:

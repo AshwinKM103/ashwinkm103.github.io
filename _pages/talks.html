@@ -5,7 +5,7 @@ permalink: /talks/
 author_profile: true
 ---
 
-{% assign talks = site.talks | sort: "order" %}
+{% assign talks = site.talks | where_exp: "t", "t.internship != true" | sort: "order" %}
 <div class="portfolio-features">
   {% for post in talks %}{% include portfolio-feature.html post=post %}{% endfor %}
 </div>

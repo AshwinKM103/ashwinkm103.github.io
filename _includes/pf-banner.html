@@ -2,6 +2,9 @@
   Shared banner for portfolio feature rows and grid cards. Renders the project's result clip
   when `banner_media` is set, otherwise the accent-gradient monogram. Reduced-motion viewers
   get `banner_poster` instead of the clip, which animated WebP cannot pause on its own.
+  `banner_media` points at a small, fast-loading .webp; once that's on screen, assets/js/
+  progressive-image.js quietly fetches the full-quality .png (same basename, see `data-hq`)
+  in the background and swaps it in — full quality on a fast connection, no wait on a slow one.
   Expects `post`.
 {% endcomment %}
 {% assign p = include.post %}
@@ -9,7 +12,9 @@
   {%- if p.banner_media -%}
     <picture>
       {%- if p.banner_poster %}<source srcset="{{ p.banner_poster | relative_url }}" media="(prefers-reduced-motion: reduce)">{% endif -%}
-      <img src="{{ p.banner_media | relative_url }}" alt="" loading="lazy" decoding="async">
+      <img src="{{ p.banner_media | relative_url }}"
+        {%- if p.banner_media contains '.webp' %} data-hq="{{ p.banner_media | replace: '.webp', '.png' | relative_url }}"{% endif %}
+        alt="" loading="lazy" decoding="async">
     </picture>
   {%- else -%}
     <span class="pf-monogram">{{ p.monogram }}</span>

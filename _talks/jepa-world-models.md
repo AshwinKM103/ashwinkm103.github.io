@@ -8,7 +8,7 @@ venue: "Reading critique · IISc"
 date: 2025-10-01
 monogram: "JEP"
 summary: "A reading critique tracing **Joint-Embedding Predictive Architectures** (I-JEPA → variational JEPA → V-JEPA 2) as one arc toward **predictive world models** — and what each step leaves unresolved."
-banner_media: /images/portfolio/jepa.png
+banner_media: /images/portfolio/jepa.webp
 tech: ["JEPA", "World Models", "Self-Supervised Learning", "Representation Learning"]
 meta: "Reading critique · I-JEPA → variational JEPA → V-JEPA 2"
 links:

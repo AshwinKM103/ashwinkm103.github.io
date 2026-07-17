@@ -1,0 +1,13 @@
+---
+layout: single
+title: "Internships"
+permalink: /internships/
+author_profile: true
+---
+
+{% assign talk_internships = site.talks | where: "internship", true | sort: "order" %}
+{% assign project_internships = site.portfolio | where: "section", "internships" | sort: "order" %}
+<div class="portfolio-features">
+  {% for post in talk_internships %}{% include portfolio-feature.html post=post %}{% endfor %}
+  {% for post in project_internships %}{% include portfolio-feature.html post=post %}{% endfor %}
+</div>

@@ -5,7 +5,7 @@ section: research
 order: 2
 monogram: "LDR"
 summary: "Deep-research agents that hand off **KV-cache state instead of text**, decoding only at tool boundaries. Matches the text baseline at **33% fewer tokens** and **28% faster**, with convergence guarantees."
-banner_media: /images/portfolio/ladra.png
+banner_media: /images/portfolio/ladra.webp
 tech: ["LLM Agents", "KV-Cache", "Latent Space", "Multi-Agent", "Diffusion"]
 meta: "Supervised by Prof. Y. Narahari · IISc · 2026"
 links:
