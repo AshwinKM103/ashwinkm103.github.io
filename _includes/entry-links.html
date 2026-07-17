@@ -1,0 +1,29 @@
+{% comment %}
+  Material link buttons for portfolio entries and talks. Expects `post` with an optional
+  `links:` map. Known keys render in a fixed order; unset keys render nothing. Local paths
+  (no "://") are resolved with relative_url; off-site links get a trailing arrow.
+{% endcomment %}
+{% assign p = include.post %}
+{% assign link_keys = "paper,slides,project,demo,code,app,model,dataset,poster,video,notes" | split: "," %}
+{% assign link_labels = "Paper,Slides,Project,Demo,Code,App,Model,Dataset,Poster,Video,Notes" | split: "," %}
+{% assign solid_keys = "paper,slides,project" | split: "," %}
+{% capture links_html %}
+  {%- for key in link_keys -%}
+    {%- assign href = p.links[key] -%}
+    {%- if href -%}
+      {%- assign label = link_labels[forloop.index0] -%}
+      {%- assign is_external = false -%}
+      {%- if href contains "://" -%}{%- assign is_external = true -%}{%- endif -%}
+      {%- if solid_keys contains key -%}
+        {%- assign cls = "btn btn--pf" -%}
+      {%- else -%}
+        {%- assign cls = "btn btn--pf btn--ghost" -%}
+      {%- endif -%}
+      <a class="{{ cls }}" href="{% if is_external %}{{ href }}{% else %}{{ href | relative_url }}{% endif %}" target="_blank" rel="noopener">{{ label }}&nbsp;&#8599;</a>
+    {%- endif -%}
+  {%- endfor -%}
+{% endcapture %}
+{% assign links_html = links_html | strip %}
+{% if links_html != "" %}
+  <div class="pf-links">{{ links_html }}</div>
+{% endif %}

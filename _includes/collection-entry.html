@@ -9,4 +9,5 @@
     {%- if post.date %} &middot; {{ post.date | date: "%B %-d, %Y" }}{% endif -%}
   </p>
   {% if post.excerpt %}<div class="entry-excerpt">{{ post.excerpt | markdownify }}</div>{% endif %}
+  {% include entry-links.html post=post %}
 </article>

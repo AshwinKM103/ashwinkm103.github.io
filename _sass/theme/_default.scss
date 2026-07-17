@@ -44,10 +44,19 @@ $sidebar-background-color: var(--global-sidebar-bg-color);
   --global-text-color-light: #5c6270;
   --global-text-color-lighter: #8a909c;
   --global-text-color-lightest: #a7adb8;
-  --global-accent-color: #00838a; /* teal — the fixed default accent */
+  --global-accent-color: #e06a43; /* warm coral — primary accent (light) */
   --global-accent-color-light: color-mix(in srgb, var(--global-accent-color), white 25%);
   --global-accent-color-dark: color-mix(in srgb, var(--global-accent-color), black 18%);
   --global-accent-color-alpha: color-mix(in srgb, var(--global-accent-color) 22%, transparent);
+  /* Forest spectrum — a ramp of shades derived from the one accent so the theme can be
+     green-forward without adding a second hue. Defined once; every value re-resolves in
+     dark mode because it references --global-accent-color / --global-bg-color. */
+  --forest-deep:   color-mix(in srgb, var(--global-accent-color), black 26%);
+  --forest-mid:    var(--global-accent-color);
+  --forest-bright: color-mix(in srgb, var(--global-accent-color), white 18%);
+  --forest-tint:   color-mix(in srgb, var(--global-accent-color) 9%, var(--global-bg-color));
+  --forest-tint-strong: color-mix(in srgb, var(--global-accent-color) 20%, var(--global-bg-color));
+  --forest-line:   color-mix(in srgb, var(--global-accent-color) 42%, var(--global-border-color));
   --global-bg-color: #ffffff;
   --global-sidebar-bg-color: #ffffff;
   --global-code-bg-color: #f4f5f6;
@@ -62,7 +71,7 @@ $sidebar-background-color: var(--global-sidebar-bg-color);
   --global-text-color-light: #aeb4bf;
   --global-text-color-lighter: #7f8593;
   --global-text-color-lightest: #656b78;
-  --global-accent-color: #4ecdc4; /* teal (brightened for dark bg) */
+  --global-accent-color: #f0805a; /* warm coral (brightened for dark bg) */
   --global-accent-color-light: color-mix(in srgb, var(--global-accent-color), white 22%);
   --global-accent-color-dark: color-mix(in srgb, var(--global-accent-color), black 15%);
   --global-accent-color-alpha: color-mix(in srgb, var(--global-accent-color) 20%, transparent);
@@ -73,14 +82,9 @@ $sidebar-background-color: var(--global-sidebar-bg-color);
   color-scheme: dark;
 }
 
-/* Explicit user choice via the theme toggle wins. */
-html[data-theme="dark"] {
-  @include dark-palette;
-}
-
-/* Honor the OS preference until the user makes an explicit choice. */
+/* Follow the visitor's OS/browser preference automatically (no manual toggle). */
 @media (prefers-color-scheme: dark) {
-  html:not([data-theme="light"]) {
+  :root {
     @include dark-palette;
   }
 }

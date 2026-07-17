@@ -1,0 +1,18 @@
+# Leadership / extracurriculars shown as a timeline on /honours/ (via _includes/leadership.html).
+- role: "Founder & Core Coordinator"
+  org: "Nexus (SciTech Fest), Rhapsody 2025 · IISc"
+  date: "Dec 2024 – Mar 2025"
+  desc: "Founded Nexus, a flagship SciTech platform for AI, Robotics, IoT and Automation — driving industry partnerships (Autodesk, L&T, OLA, ART-PARK) and large-scale competitions (Robonautica, Code Conquest, InnovateX)."
+  hue: blue
+
+- role: "Sponsorship Coordinator"
+  org: "Pravega XI · IISc"
+  date: "Aug 2024 – Dec 2024"
+  desc: "Led sponsorship acquisition and corporate outreach, securing substantial funding and long-term industry partnerships aligned with Pravega's science-and-technology mission."
+  hue: violet
+
+- role: "Event Coordinator"
+  org: "RevCoding, Pravega 2025 · IISc"
+  date: "Jul 2024 – Jan 2025"
+  desc: "Conceptualised and ran RevCoding, a reverse-coding competition blending algorithmic reasoning, logical deduction, and narrative-driven problem solving."
+  hue: teal

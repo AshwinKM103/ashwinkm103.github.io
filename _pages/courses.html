@@ -1,0 +1,13 @@
+---
+layout: single
+title: "Courses"
+permalink: /courses/
+author_profile: true
+---
+
+{% for g in site.data.courses %}
+  <h2 class="pf-group-title sub-{{ g.hue }}">{{ g.name }}</h2>
+  <div class="courses-grid">
+    {% for c in g.courses %}{% include course-card.html course=c hue=g.hue %}{% endfor %}
+  </div>
+{% endfor %}

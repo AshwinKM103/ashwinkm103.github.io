@@ -9,9 +9,9 @@
   {% if a.avatar %}
     <div class="author-avatar">
       {% if a.avatar contains '://' %}
-        <img src="{{ a.avatar }}" alt="{{ a.name | default: site.title | escape }}">
+        <img src="{{ a.avatar }}" alt="{{ a.name | default: site.title | escape }}" loading="lazy" decoding="async">
       {% else %}
-        <img src="{{ a.avatar | prepend: '/images/' | relative_url }}" alt="{{ a.name | default: site.title | escape }}">
+        <img src="{{ a.avatar | prepend: '/images/' | relative_url }}" alt="{{ a.name | default: site.title | escape }}" loading="lazy" decoding="async">
       {% endif %}
     </div>
   {% endif %}
@@ -21,13 +21,15 @@
   {% if a.bio %}<p class="author-bio">{{ a.bio | markdownify | strip_html }}</p>{% endif %}
 
   <div class="author-meta">
-    {% if a.employer %}<p><span class="icon"><i class="fas fa-university" aria-hidden="true"></i></span> {{ a.employer }}</p>{% endif %}
-    {% if a.location %}<p><span class="icon"><i class="fas fa-map-marker-alt" aria-hidden="true"></i></span> {{ a.location }}</p>{% endif %}
+    {% if a.employer %}<p><span class="icon author-meta-logo"><img src="{{ '/images/logos/iisc.svg' | relative_url }}" alt="" aria-hidden="true"></span> <strong>{{ a.employer }}</strong></p>{% endif %}
   </div>
 
   <ul class="author-links">
     {% if a.email %}
       <li><a href="mailto:{{ a.email }}"><span class="icon"><i class="fas fa-envelope" aria-hidden="true"></i></span>Email</a></li>
+    {% endif %}
+    {% if a.gmail %}
+      <li><a href="mailto:{{ a.gmail }}"><span class="icon author-link-logo" style="--logo-color: #EA4335; -webkit-mask-image: url('{{ '/assets/logos/gmail.svg' | relative_url }}'); mask-image: url('{{ '/assets/logos/gmail.svg' | relative_url }}');" aria-hidden="true"></span>Gmail</a></li>
     {% endif %}
     {% if a.googlescholar %}
       <li><a href="{{ a.googlescholar }}" rel="me nofollow noopener noreferrer"><span class="icon"><i class="ai ai-google-scholar" aria-hidden="true"></i></span>Google Scholar</a></li>
@@ -60,4 +62,6 @@
       <li><a href="https://{{ a.bluesky }}" rel="me nofollow noopener noreferrer"><span class="icon"><i class="fab fa-bluesky" aria-hidden="true"></i></span>Bluesky</a></li>
     {% endif %}
   </ul>
+
+  {% include sidebar-internships.html %}
 </div>

@@ -14,10 +14,15 @@ learning research and practical systems. My work centers on **large language mod
 **agentic / multi-agent AI** — with a recurring interest in giving AI systems structured,
 persistent memory.
 
-I currently work as an **ML Research Engineer at Zenteiq AI** (Computational Mathematics
-Group, IISc), where I study whether human-inspired *learn–master–teach* training pipelines
-can improve the mathematical reasoning of LLMs, and I have interned at the **Energy
-Informatics Lab, IISc** on anomaly detection for electricity-consumption time series.
+As an **ML Research Engineer at Zenteiq AI** (Computational Mathematics Group, IISc) I studied
+whether human-inspired *learn–master–teach* training pipelines can improve the mathematical
+reasoning of LLMs — work now under review at ICLR 2026 — and I have interned at the **Energy
+Informatics Lab, IISc** on anomaly detection for electricity-consumption time series. Both are
+written up under [talks](/talks/) and [projects](/portfolio/#internships).
+
+## Skills
+
+{% include skills.html %}
 
 ## Research interests
 
@@ -26,15 +31,3 @@ Informatics Lab, IISc** on anomaly detection for electricity-consumption time se
 - **Agentic & multi-agent AI** — routing, tool use, coordination under uncertainty
 - **Structured & persistent memory** for long-horizon personalization
 - **Computer vision** — vision transformers, motion-aware video generation
-
-## Highlights
-
-- **ML Research Engineer, Zenteiq AI** — a *learn–master–teach* fine-tuning paradigm that
-  improved LLM math-reasoning accuracy by **10–17 percentage points** over the base model.
-- **Lead Speaker**, International Conference on Applied AI & Scientific Machine Learning,
-  presenting to an audience that included researchers from Nvidia, Google, and Meta.
-- **World Scholar's Cup** (Global Round, Manila) · **NTSE** Stage-I awardee ·
-  **KVPY** (SA stream).
-
-See my [publications](/publications/), [projects](/portfolio/), and [CV](/cv-json/) for more,
-or reach out by [email](mailto:ashwinkm@iisc.ac.in).

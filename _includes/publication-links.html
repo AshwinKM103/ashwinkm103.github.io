@@ -6,14 +6,14 @@
 {% endcomment %}
 {% if post.paperurl or post.arxiv or post.codeurl or post.projecturl or post.slidesurl or post.posterurl or post.videourl or post.doi or post.bibtexurl %}
   <p class="entry-links">
-    {% if post.paperurl %}<a class="btn" href="{% if post.paperurl contains '://' %}{{ post.paperurl }}{% else %}{{ post.paperurl | relative_url }}{% endif %}">Paper</a>{% endif %}
-    {% if post.arxiv %}<a class="btn" href="{{ post.arxiv }}">arXiv</a>{% endif %}
-    {% if post.codeurl %}<a class="btn" href="{{ post.codeurl }}">Code</a>{% endif %}
-    {% if post.projecturl %}<a class="btn" href="{{ post.projecturl }}">Project</a>{% endif %}
-    {% if post.slidesurl %}<a class="btn" href="{% if post.slidesurl contains '://' %}{{ post.slidesurl }}{% else %}{{ post.slidesurl | relative_url }}{% endif %}">Slides</a>{% endif %}
-    {% if post.posterurl %}<a class="btn" href="{{ post.posterurl }}">Poster</a>{% endif %}
-    {% if post.videourl %}<a class="btn" href="{{ post.videourl }}">Video</a>{% endif %}
-    {% if post.doi %}<a class="btn" href="{% if post.doi contains '://' %}{{ post.doi }}{% else %}https://doi.org/{{ post.doi }}{% endif %}">DOI</a>{% endif %}
-    {% if post.bibtexurl %}<a class="btn" href="{% if post.bibtexurl contains '://' %}{{ post.bibtexurl }}{% else %}{{ post.bibtexurl | relative_url }}{% endif %}">BibTeX</a>{% endif %}
+    {% if post.paperurl %}<a class="btn" target="_blank" rel="noopener" href="{% if post.paperurl contains '://' %}{{ post.paperurl }}{% else %}{{ post.paperurl | relative_url }}{% endif %}">Paper</a>{% endif %}
+    {% if post.arxiv %}<a class="btn" target="_blank" rel="noopener" href="{{ post.arxiv }}">arXiv</a>{% endif %}
+    {% if post.codeurl %}<a class="btn" target="_blank" rel="noopener" href="{{ post.codeurl }}">Code</a>{% endif %}
+    {% if post.projecturl %}<a class="btn" target="_blank" rel="noopener" href="{{ post.projecturl }}">Project</a>{% endif %}
+    {% if post.slidesurl %}<a class="btn" target="_blank" rel="noopener" href="{% if post.slidesurl contains '://' %}{{ post.slidesurl }}{% else %}{{ post.slidesurl | relative_url }}{% endif %}">Slides</a>{% endif %}
+    {% if post.posterurl %}<a class="btn" target="_blank" rel="noopener" href="{{ post.posterurl }}">Poster</a>{% endif %}
+    {% if post.videourl %}<a class="btn" target="_blank" rel="noopener" href="{{ post.videourl }}">Video</a>{% endif %}
+    {% if post.doi %}<a class="btn" target="_blank" rel="noopener" href="{% if post.doi contains '://' %}{{ post.doi }}{% else %}https://doi.org/{{ post.doi }}{% endif %}">DOI</a>{% endif %}
+    {% if post.bibtexurl %}<a class="btn" target="_blank" rel="noopener" href="{% if post.bibtexurl contains '://' %}{{ post.bibtexurl }}{% else %}{{ post.bibtexurl | relative_url }}{% endif %}">BibTeX</a>{% endif %}
   </p>
 {% endif %}

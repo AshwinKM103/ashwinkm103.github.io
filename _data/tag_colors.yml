@@ -1,0 +1,69 @@
+# Maps a tag (lower-cased) to one of the 6 category hues (green/blue/violet/amber/rose/teal).
+# Used by the badge chips and card accent bars. Unmapped tags default to "green".
+llms: green
+llm agents: green
+llm post-training: green
+pedagogical ai: green
+llama-3.1: green
+minari: green
+llm routing: green
+peft: green
+langchain: green
+langgraph: green
+unsloth: green
+
+python: teal
+pytorch: teal
+huggingface: teal
+scikit-learn: teal
+kalman filtering: teal
+time series: teal
+weights & biases: teal
+
+rl: amber
+offline rl: amber
+reinforcement learning: amber
+decision transformer: amber
+mujoco: amber
+gymnasium: amber
+multi-agent: amber
+kv-cache: amber
+trl: amber
+openrlhf: amber
+multi-armed bandits: amber
+
+aws lambda: blue
+bedrock: blue
+dynamodb: blue
+serverless: blue
+aws: blue
+aws cloud: blue
+docker: blue
+ray: blue
+git: blue
+efficient inference: blue
+
+meta-learning: violet
+lora: violet
+hypernetworks: violet
+latent space: violet
+optimization: violet
+game theory: violet
+multi-fidelity systems: violet
+
+diffusion: rose
+jepa: rose
+world models: rose
+self-supervised learning: rose
+representation learning: rose
+computer vision: rose
+generative: rose
+
+ml: green
+llm agents: green
+data: teal
+probability: violet
+theory: violet
+math: green
+algorithms: blue
+systems: blue

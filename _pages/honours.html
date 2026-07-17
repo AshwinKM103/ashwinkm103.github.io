@@ -1,0 +1,14 @@
+---
+layout: single
+title: "Honours & Leadership"
+permalink: /honours/
+author_profile: true
+---
+
+<h2 class="pf-group-title sub-amber">Awards &amp; Achievements</h2>
+<div class="awards-grid">
+  {% for a in site.data.awards %}{% include award-card.html award=a %}{% endfor %}
+</div>
+
+<h2 class="pf-group-title sub-blue">Leadership &amp; Extracurriculars</h2>
+{% include leadership.html %}

@@ -1,0 +1,12 @@
+{% comment %}
+  One award as a stat-forward card: icon · big stat · title · detail · year. Colour hue via
+  `cat-{hue}`. Expects `award`.
+{% endcomment %}
+{% assign a = include.award %}
+<article class="award-card cat-{{ a.hue | default: 'amber' }}">
+  <div class="award-icon"><i class="{{ a.icon | default: 'fas fa-trophy' }}" aria-hidden="true"></i></div>
+  <div class="award-stat">{{ a.stat }}</div>
+  <h3 class="award-title">{{ a.title }}</h3>
+  <p class="award-detail">{{ a.detail }}</p>
+  {% if a.year %}<p class="award-year">{{ a.year }}</p>{% endif %}
+</article>

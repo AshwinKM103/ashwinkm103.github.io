@@ -1,0 +1,90 @@
+# Coursework shown on /courses/, grouped by theme (rendered by _pages/courses.html →
+# _includes/course-card.html). Biology, chemistry, humanities, materials-science and lab
+# courses are intentionally excluded. Each course: title, meta, description, tags[].
+- name: "Foundations (Mathematics)"
+  hue: green
+  courses:
+    - title: "Analysis & Linear Algebra I–II"
+      meta: "Core · IISc · 2023–24"
+      description: "Real analysis and linear algebra — the mathematical bedrock for ML and optimisation."
+      tags: ["Math", "Theory"]
+    - title: "Probability & Statistics"
+      meta: "Core · IISc · 2024"
+      description: "Distributions, estimation, and inference — the basis for ML and bandits."
+      tags: ["Probability", "Theory"]
+    - title: "Linear & Nonlinear Optimization"
+      meta: "Graduate · Core theory · IISc · 2025"
+      description: "Convex analysis, duality, and gradient methods — the optimisation grounding for training."
+      tags: ["Optimization", "Theory"]
+    - title: "Stochastic Models & Applications"
+      meta: "Graduate · Core theory · IISc · 2025"
+      description: "Markov chains and stochastic processes that underpin bandits and reinforcement learning."
+      tags: ["Probability", "Theory"]
+    - title: "Numerical Methods"
+      meta: "Core · IISc · 2024"
+      description: "Numerical linear algebra, integration, and stability for scientific computing."
+      tags: ["Math", "Data"]
+    - title: "Discrete Mathematics"
+      meta: "Core · IISc · 2023"
+      description: "Combinatorics, graphs, and proof techniques underpinning algorithms."
+      tags: ["Theory", "Algorithms"]
+    - title: "Basic Analysis & Algebraic Structures"
+      meta: "Core · IISc · 2024"
+      description: "Rigorous limits and metric spaces; groups, rings, and fields."
+      tags: ["Math", "Theory"]
+
+- name: "Core Computer Science"
+  hue: blue
+  courses:
+    - title: "Data Structures & Algorithms"
+      meta: "Core · IISc · 2024"
+      description: "Advanced structures (tries, splay trees, HyperLogLog) and algorithmic analysis."
+      tags: ["Algorithms", "Systems"]
+    - title: "Algorithms & Programming"
+      meta: "Core · IISc · 2023"
+      description: "Foundational algorithms, data-structure design, and complexity."
+      tags: ["Algorithms"]
+    - title: "Computer Systems"
+      meta: "Core · IISc · 2023"
+      description: "Architecture, memory, and the systems stack beneath ML workloads."
+      tags: ["Systems"]
+    - title: "Automata & Computability"
+      meta: "Core · IISc · 2024"
+      description: "Formal languages, automata, and the limits of computation."
+      tags: ["Theory"]
+
+- name: "AI and ML"
+  hue: violet
+  courses:
+    - title: "Introduction to AI & Machine Learning"
+      meta: "Core · IISc · 2025"
+      description: "Classical ML through deep learning — the core foundation for everything since."
+      tags: ["ML"]
+    - title: "Reinforcement Learning"
+      meta: "Graduate · Elective · IISc · 2026"
+      description: "Policy gradients, actor–critic, and offline RL — behind my Decision-Transformer work."
+      tags: ["RL", "Offline RL"]
+    - title: "Deep Learning for Computer Vision"
+      meta: "Graduate · Elective · IISc · 2026"
+      description: "CNNs through vision transformers, with self-supervised representation learning."
+      tags: ["Computer Vision", "Representation Learning"]
+    - title: "Deep Generative Models"
+      meta: "Graduate · Elective · IISc · 2026"
+      description: "VAEs, diffusion, and autoregressive models — the backbone behind FOCAL's VAE stage."
+      tags: ["Diffusion", "Generative"]
+    - title: "Generative & Agentic AI in Practice"
+      meta: "Graduate · Elective · IISc · 2025"
+      description: "Building and evaluating LLM agents — tool use, retrieval, and orchestration."
+      tags: ["LLM Agents", "Multi-Agent"]
+    - title: "Game Theory"
+      meta: "Graduate · Elective · IISc · 2026"
+      description: "Equilibria, mechanism design, and multi-agent incentives."
+      tags: ["Game Theory", "Multi-Agent"]
+    - title: "Applied Data Science & AI"
+      meta: "Core · IISc · 2025"
+      description: "End-to-end ML pipelines on real datasets — features, evaluation, deployment."
+      tags: ["ML", "Data"]
+    - title: "Cloud Computing"
+      meta: "Elective · IISc · 2025"
+      description: "Serverless and distributed systems — the grounding behind IssueOps on AWS."
+      tags: ["AWS", "Serverless"]

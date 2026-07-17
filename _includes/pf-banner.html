@@ -1,0 +1,17 @@
+{% comment %}
+  Shared banner for portfolio feature rows and grid cards. Renders the project's result clip
+  when `banner_media` is set, otherwise the accent-gradient monogram. Reduced-motion viewers
+  get `banner_poster` instead of the clip, which animated WebP cannot pause on its own.
+  Expects `post`.
+{% endcomment %}
+{% assign p = include.post %}
+<div class="pf-banner{% if p.banner_media %} pf-banner--media{% endif %}" aria-hidden="true">
+  {%- if p.banner_media -%}
+    <picture>
+      {%- if p.banner_poster %}<source srcset="{{ p.banner_poster | relative_url }}" media="(prefers-reduced-motion: reduce)">{% endif -%}
+      <img src="{{ p.banner_media | relative_url }}" alt="" loading="lazy" decoding="async">
+    </picture>
+  {%- else -%}
+    <span class="pf-monogram">{{ p.monogram }}</span>
+  {%- endif -%}
+</div>

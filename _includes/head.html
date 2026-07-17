@@ -20,13 +20,10 @@
   </script>
 
   <script>
-    /* Apply the saved light/dark choice and accent color before first paint (no FOUC). */
+    /* Apply the saved accent color before first paint (no FOUC).
+       Light/dark is handled purely by prefers-color-scheme in CSS. */
     (function () {
       try {
-        var t = localStorage.getItem('theme');
-        if (t === 'dark' || t === 'light') {
-          document.documentElement.setAttribute('data-theme', t);
-        }
         var a = localStorage.getItem('accent');
         if (a) {
           document.documentElement.style.setProperty('--global-accent-color', a);

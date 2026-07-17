@@ -1,0 +1,24 @@
+{% comment %}
+  Skills — grouped chips with brand logos (self-hosted SVGs, coloured via CSS mask so they work
+  in light & dark). Items without an icon render as a coloured text chip in the group hue.
+  Driven by _data/skills.yml.
+{% endcomment %}
+<div class="skills">
+  {% for g in site.data.skills %}
+    <div class="skill-group">
+      <h3 class="skill-group-title sub-{{ g.hue }}">{{ g.name }}</h3>
+      <ul class="skill-list">
+        {% for s in g.items %}
+          <li class="skill-chip skill-chip--{{ g.hue }}">
+            {% if s.icon %}
+              <span class="skill-logo" style="background-color: {{ s.color | default: 'var(--global-text-color-light)' }};">
+                <span class="skill-logo-glyph" style="-webkit-mask-image: url('{{ '/assets/logos/' | append: s.icon | relative_url }}'); mask-image: url('{{ '/assets/logos/' | append: s.icon | relative_url }}');"></span>
+              </span>
+            {% endif %}
+            <span class="skill-name">{{ s.name }}</span>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endfor %}
+</div>

@@ -12,9 +12,9 @@ site_theme               : "default" # Basically Basic skin bridged to light/dar
 # Accent-color picker: shows a swatch picker (6 preset skins + custom color) next to the
 # light/dark toggle so you can try accent colors live. Set to false for final deployment —
 # the site then uses the single fixed accent defined in _sass/theme/_default.scss.
-accent_picker            : true
+accent_picker            : false
 # Client-side search (Basically Basic Lunr search ported over Academic Pages collections)
-search                   : true
+search                   : false
 search_provider          : lunr # lunr (default). Set false to disable search entirely.
 search_full_content      : false # true indexes full page content (larger index)
 title                    : "Ashwin K M"
@@ -31,14 +31,14 @@ repository               : "AshwinKM103/ashwinkm103.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
+  avatar           : "profile-avatar.webp"
   name             : "Ashwin K M"
   pronouns         : # example: "she/her"
   bio              : "Undergraduate researcher in AI/ML at IISc — LLM post-training & reasoning, reinforcement learning, and agentic systems."
-  location         : "Bangalore, India"
   employer         : "IISc Bangalore"
   uri              : # URL
   email            : "ashwinkm@iisc.ac.in"
+  gmail            : "ashwin123robotix@gmail.com"
 
   # Academic websites
   academia         : # URL
@@ -90,14 +90,8 @@ author:
   youtube          : # Username
   zhihu            : # Username
 
-# Publication Category - The following the list of publication categories and their headings
-publication_category:
-  books:
-    title: 'Books'
-  manuscripts:
-    title: 'Journal Articles'    
-  conferences:
-    title: 'Conference Papers'
+# Publication categories removed: papers render as a single flat list (no category headings).
+# Re-add a `publication_category:` map here to group papers under headings again.
 
 # Site Settings
 teaser                   :  # filename of teaser fallback teaser image placed in /images/ for social media previews
@@ -235,15 +229,8 @@ kramdown:
 
 # These settings control the types of collections used by the template
 collections:
-  teaching:
-    output: true
-    permalink: /:collection/:path/
-  publications:
-    output: true
-    permalink: /:collection/:path/
   portfolio:
-    output: true
-    permalink: /:collection/:path/
+    output: false
   talks:
     output: true
     permalink: /:collection/:path/
@@ -265,13 +252,6 @@ defaults:
     values:
       layout: single
       author_profile: true
-  # _teaching
-  - scope:
-      path: ""
-      type: teaching
-    values:
-      layout: single
-      author_profile: false
   # _publications
   - scope:
       path: ""

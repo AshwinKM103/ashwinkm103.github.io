@@ -12,115 +12,20 @@
   var html = document.documentElement;
 
   /* --------------------------------------------------------------------
-     Off-canvas sidebar + search toggle (Basically Basic)
-     -------------------------------------------------------------------- */
-  var menuItems = document.querySelectorAll('#sidebar li');
-  var docElemStyle = document.documentElement.style;
-  var transitionProp = typeof docElemStyle.transition === 'string' ? 'transition' : 'WebkitTransition';
-
-  function animateMenuItems() {
-    for (var i = 0; i < menuItems.length; i++) {
-      var item = menuItems[i];
-      item.style[transitionProp + 'Delay'] = (i * 75) + 'ms';
-      item.classList.toggle('is--moved');
-    }
-  }
-
-  var myWrapper = document.querySelector('.wrapper');
-  var myMenu = document.querySelector('.sidebar');
-  var myToggle = document.querySelector('.toggle');
-  var myInitialContent = document.querySelector('.initial-content');
-  var mySearchContent = document.querySelector('.search-content');
-  var mySearchToggle = document.querySelector('.search-toggle');
-
-  function toggleClassMenu() {
-    if (!myMenu) { return; }
-    myMenu.classList.add('is--animatable');
-    if (!myMenu.classList.contains('is--visible')) {
-      myMenu.classList.add('is--visible');
-      if (myToggle) { myToggle.classList.add('open'); }
-      if (myWrapper) { myWrapper.classList.add('is--pushed'); }
-    } else {
-      myMenu.classList.remove('is--visible');
-      if (myToggle) { myToggle.classList.remove('open'); }
-      if (myWrapper) { myWrapper.classList.remove('is--pushed'); }
-    }
-  }
-
-  if (myMenu) {
-    myMenu.addEventListener('transitionend', function () {
-      myMenu.classList.remove('is--animatable');
-    }, false);
-  }
-  if (myToggle) {
-    myToggle.addEventListener('click', function () { toggleClassMenu(); animateMenuItems(); }, false);
-  }
-
-  function toggleClassSearch() {
-    if (!mySearchContent) { return; }
-    mySearchContent.classList.toggle('is--visible');
-    if (myInitialContent) { myInitialContent.classList.toggle('is--hidden'); }
-    setTimeout(function () {
-      var input = document.querySelector('.search-content input');
-      if (input) { input.focus(); }
-    }, 400);
-  }
-  if (mySearchToggle) {
-    mySearchToggle.addEventListener('click', toggleClassSearch, false);
-  }
-
-  /* --------------------------------------------------------------------
-     Light / dark theme toggle (Academic Pages)
-     Works with the CSS custom-property bridge in _sass/theme/_default.scss.
+     Light / dark theme: follow the OS/browser preference automatically.
+     There is no manual toggle — the palette is driven entirely by
+     `@media (prefers-color-scheme)` in _sass/theme/_default.scss. This helper
+     only exists so Plotly charts can pick a matching light/dark template.
      -------------------------------------------------------------------- */
   var mql = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
 
   function computedTheme() {
-    var explicit = html.getAttribute('data-theme');
-    if (explicit === 'dark' || explicit === 'light') { return explicit; }
     return (mql && mql.matches) ? 'dark' : 'light';
   }
 
-  function syncIcon(theme) {
-    var icon = document.getElementById('theme-icon');
-    if (!icon) { return; }
-    if (theme === 'dark') {
-      icon.classList.remove('fa-sun');
-      icon.classList.add('fa-moon');
-    } else {
-      icon.classList.remove('fa-moon');
-      icon.classList.add('fa-sun');
-    }
-  }
-
-  function applyTheme(theme) {
-    html.setAttribute('data-theme', theme);
-    syncIcon(theme);
-    redrawPlotly();
-  }
-
-  function toggleTheme() {
-    var next = computedTheme() === 'dark' ? 'light' : 'dark';
-    try { localStorage.setItem('theme', next); } catch (e) {}
-    applyTheme(next);
-  }
-
-  // Reflect the current (possibly OS-derived) theme on load.
-  syncIcon(computedTheme());
-
-  var toggleBtn = document.getElementById('theme-toggle');
-  if (toggleBtn) { toggleBtn.addEventListener('click', toggleTheme); }
-
-  // Follow OS changes until the user makes an explicit choice.
+  // Recolor any Plotly charts when the OS preference flips.
   if (mql) {
-    mql.addEventListener('change', function (e) {
-      var stored;
-      try { stored = localStorage.getItem('theme'); } catch (err) { stored = null; }
-      if (stored !== 'dark' && stored !== 'light') {
-        syncIcon(e.matches ? 'dark' : 'light');
-        redrawPlotly();
-      }
-    });
+    mql.addEventListener('change', function () { redrawPlotly(); });
   }
 
   /* --------------------------------------------------------------------

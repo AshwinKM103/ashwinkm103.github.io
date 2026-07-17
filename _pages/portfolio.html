@@ -1,8 +1,22 @@
 ---
-layout: collection
-collection: portfolio
-entries_layout: grid
-title: "Portfolio"
+layout: single
+title: "Projects"
 permalink: /portfolio/
 author_profile: true
 ---
+
+{% assign research = site.portfolio | where: "section", "research" | sort: "order" %}
+{% if research.size > 0 %}
+  <h2 class="pf-group-title sub-green" id="research">Research Projects</h2>
+  <div class="portfolio-features">
+    {% for post in research %}{% include portfolio-feature.html post=post %}{% endfor %}
+  </div>
+{% endif %}
+
+{% assign internships = site.portfolio | where: "section", "internships" | sort: "order" %}
+{% if internships.size > 0 %}
+  <h2 class="pf-group-title sub-blue" id="internships">Internships</h2>
+  <div class="portfolio-features">
+    {% for post in internships %}{% include portfolio-feature.html post=post %}{% endfor %}
+  </div>
+{% endif %}

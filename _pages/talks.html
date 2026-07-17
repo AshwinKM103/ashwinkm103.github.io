@@ -1,11 +1,11 @@
 ---
-layout: collection-list
-collection: talks
-title: "Talks and presentations"
+layout: single
+title: "Talks & Presentations"
 permalink: /talks/
 author_profile: true
 ---
 
-{% if site.talkmap_link == true %}
-  <p><a href="{{ '/talkmap.html' | relative_url }}">See a map of all the places I've given a talk!</a></p>
-{% endif %}
+{% assign talks = site.talks | sort: "order" %}
+<div class="portfolio-features">
+  {% for post in talks %}{% include portfolio-feature.html post=post %}{% endfor %}
+</div>

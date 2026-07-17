@@ -1,0 +1,30 @@
+{% comment %}
+  Compact "Internships" list for the author sidebar — logo tile, role, company, dates.
+  Driven by _data/experience.yml (same data the old in-page Work Experience section used).
+{% endcomment %}
+{% assign jobs = site.data.experience %}
+{% if jobs and jobs.size > 0 %}
+<div class="sidebar-section">
+  <h4 class="sidebar-section-title">Internships</h4>
+  <ul class="sidebar-exp">
+    {% for job in jobs %}
+      <li class="sidebar-exp-item">
+        <div class="sidebar-exp-logo">
+          {% if job.logo %}
+            <img src="{{ job.logo | relative_url }}" alt="{{ job.company | escape }}" loading="lazy" decoding="async">
+          {% else %}
+            <span class="sidebar-exp-monogram">{{ job.monogram | default: job.company | slice: 0, 2 }}</span>
+          {% endif %}
+        </div>
+        <div class="sidebar-exp-info">
+          <p class="sidebar-exp-role">{{ job.role }}</p>
+          <p class="sidebar-exp-company">{{ job.company }}</p>
+          <p class="sidebar-exp-date">{{ job.start }} &ndash;
+            {% if job.end %}{{ job.end }}{% else %}<span class="exp-present">Present</span>{% endif %}
+          </p>
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}

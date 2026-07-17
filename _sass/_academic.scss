@@ -6,6 +6,154 @@
    Imported last in assets/css/main.scss.
    ========================================================================== */
 
+/* --- Self-hosted fonts: Inter (body, variable) + Lora (display serif, used sparingly for
+       the hero title and top-level section headings). --- */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/assets/fonts/inter.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Lora";
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url("/assets/fonts/lora.woff2") format("woff2");
+}
+
+.entry-content h2,
+.pf-group-title {
+  font-family: "Lora", Georgia, "Times New Roman", serif;
+}
+
+/* ==========================================================================
+   COLOUR SYSTEM — a calm 6-hue category palette applied site-wide (tag chips,
+   card accents, skill groups, courses, hover glows) plus a warm gradient hero.
+   Hues read on both light and dark; tint backgrounds use `transparent` so they
+   adapt to the theme automatically.
+   ========================================================================== */
+$cats: (
+  green:  #2e9e63,
+  blue:   #4b8fd6,
+  violet: #8b74e8,
+  amber:  #d9963a,
+  rose:   #d95f92,
+  teal:   #2bb0ab,
+);
+
+@each $n, $c in $cats {
+  :root { --cat-#{$n}: #{$c}; }
+
+  /* chip (chained selector so the hue always beats the base .badge) */
+  .badge.badge--#{$n} {
+    color: #{$c};
+    background: color-mix(in srgb, #{$c} 15%, transparent);
+    border-color: color-mix(in srgb, #{$c} 32%, transparent);
+  }
+
+  /* card accent + subheading colour carriers */
+  .cat-#{$n} { --card-accent: #{$c}; }
+  .sub-#{$n} { color: #{$c}; }
+
+  /* skill chip tinted in its group hue */
+  .skill-chip--#{$n} {
+    background: color-mix(in srgb, #{$c} 10%, var(--global-code-bg-color));
+    border-color: color-mix(in srgb, #{$c} 28%, transparent);
+  }
+}
+
+/* --- Skills (About page) — grouped chips with brand logos --- */
+.skills {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5em 2em;
+  margin: 0.4em 0 0;
+
+  @include breakpoint($medium) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.skill-group-title {
+  margin: 0 0 0.6em;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-family: $base-font-family; /* not Playfair — these are labels */
+}
+
+.skill-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+}
+
+.skill-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  padding: 0.35em 0.75em;
+  border-radius: 999px;
+  font-size: 0.82em;
+  font-weight: 600;
+  color: var(--global-text-color);
+  border: 1px solid var(--global-border-color);
+  background: var(--global-code-bg-color);
+}
+
+/* Every logo is normalized to the same tile: a brand-colour background with a single-colour
+   (black in light mode, white in dark) glyph on top — consistent regardless of whether the
+   source icon is a thin line-art vector or a denser wordmark/raster shape. */
+.skill-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.4em;
+  height: 1.4em;
+  border-radius: 6px;
+  flex: none;
+}
+
+.skill-logo-glyph {
+  width: 62%;
+  height: 62%;
+  background-color: var(--global-text-color);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+/* Hero / page title — neutral (black in light, white in dark), Lora. */
+.intro-title {
+  font-family: "Lora", Georgia, "Times New Roman", serif;
+  color: var(--global-text-color);
+}
+
+/* Card accent default (coral); `.cat-{hue}` on a card/timeline overrides it via inheritance. */
+:root { --card-accent: var(--global-accent-color); }
+
+/* Per-section heading hues — cycle the 6 category colours across the section headings
+   (markdown h2, .pf-group-title, .collection-group__title) so each section has its own
+   colour. Component titles (.pf-title/.course-title) stay neutral. */
+$section-hues: green, blue, violet, amber, rose, teal;
+@for $i from 1 through 6 {
+  $h: nth($section-hues, $i);
+  .entry-content h2:not(.pf-group-title):nth-of-type(6n + #{$i}) {
+    color: var(--cat-#{$h});
+    border-bottom-color: color-mix(in srgb, var(--cat-#{$h}) 45%, var(--global-border-color));
+  }
+}
+
 /* --- Grouped collection sections (publications / talks) --- */
 .collection-group {
   margin-bottom: 2em;
@@ -18,7 +166,35 @@
 
 .collection-group__title {
   margin-bottom: 0.5em;
-  color: var(--global-accent-color);
+  color: var(--forest-deep);
+}
+
+/* --- Forest-forward headings. The base stays black-&-white; section headings
+       carry forest; the hero title uses the warm gradient defined above. --- */
+.entry-content {
+  h2 {
+    /* colour + border-colour come from the per-section hue cycle above */
+    margin-top: 2.5em;      /* breathing room between sections */
+    padding-bottom: 0.2em;
+    border-bottom: 2px solid var(--global-border-color);
+  }
+
+  /* first section heading shouldn't push a big gap under the page title */
+  > h2:first-child {
+    margin-top: 1em;
+  }
+
+  ul > li::marker {
+    color: var(--global-text-color);
+  }
+
+  /* Blockquotes / callouts get a forest tint + bar. */
+  blockquote {
+    border-left: 4px solid var(--forest-mid);
+    background: var(--forest-tint);
+    padding: 0.6em 1em;
+    color: var(--global-text-color-light);
+  }
 }
 
 /* --- Academic metadata line (venue • date • type) --- */
@@ -67,13 +243,37 @@
 }
 
 .author-meta {
-  margin: 0.5em 0;
+  margin: 0.6em 0;
   color: var(--global-text-color-light);
-  font-size: 0.85em;
+  font-size: 1.05em;   /* current affiliation deserves more visual weight than the muted meta */
 
   .icon {
-    width: 1.25em;
+    width: 1.6em;
     text-align: center;
+  }
+
+  strong {
+    color: var(--global-text-color);   /* current affiliation: stands out from the rest */
+    font-weight: 700;
+  }
+}
+
+/* Institution crest: a small white coin so the mark reads on both light and dark. */
+.author-meta-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6em;
+  height: 1.6em;
+  border-radius: 50%;
+  background: #fff;
+  padding: 0.2em;
+  vertical-align: middle;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
 }
 
@@ -102,6 +302,104 @@
     margin-right: 0.35em;
     color: var(--global-text-color-light);
   }
+
+  .author-link-logo {
+    display: inline-block;
+    width: 1.5em;          /* match .icon/.fab/.fas so link labels line up */
+    height: 1.5em;
+    margin-right: 0.35em;
+    vertical-align: middle;
+    background-color: var(--logo-color, currentColor);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-size: 62%;
+    mask-size: 62%;
+  }
+}
+
+/* Compact "Internships" list in the sidebar (see _includes/sidebar-internships.html). */
+.sidebar-section {
+  margin-top: 1.5em;
+  text-align: left;
+}
+
+.sidebar-section-title {
+  margin: 0 0 0.75em;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--global-text-color-light);
+}
+
+.sidebar-exp {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.sidebar-exp-item {
+  display: flex;
+  gap: 0.7em;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.sidebar-exp-logo {
+  flex: 0 0 auto;
+  width: 2.2em;
+  height: 2.2em;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid var(--global-border-color);
+  border-radius: $border-radius;
+  background: var(--global-code-bg-color);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 0.2em;
+  }
+}
+
+.sidebar-exp-monogram {
+  color: var(--global-accent-color);
+  font-weight: 800;
+  font-size: 0.72em;
+}
+
+.sidebar-exp-info {
+  min-width: 0;
+}
+
+.sidebar-exp-role {
+  margin: 0;
+  font-size: 0.82em;
+  font-weight: 700;
+  color: var(--global-text-color);
+  line-height: 1.3;
+}
+
+.sidebar-exp-company {
+  margin: 0.1em 0 0;
+  font-size: 0.78em;
+  color: var(--global-text-color-light);
+  line-height: 1.3;
+}
+
+.sidebar-exp-date {
+  margin: 0.15em 0 0;
+  font-size: 0.7em;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--global-text-color-lighter);
 }
 
 /* Two-column layout: author sidebar + content (wide screens only) */
@@ -130,21 +428,57 @@
   }
 }
 
-/* --- Light/dark theme toggle button (in the masthead/menu) --- */
-.theme-toggle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.25em;
-  border: 0;
-  background: transparent;
-  color: inherit;
-  cursor: pointer;
-  font-size: 1em;
-  line-height: 1;
+/* --- Top horizontal nav bar (academic style) — replaces the off-canvas drawer. --- */
+#masthead {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: color-mix(in srgb, var(--global-bg-color) 92%, transparent);
+  backdrop-filter: saturate(180%) blur(8px);
+  -webkit-backdrop-filter: saturate(180%) blur(8px);
+  border-bottom: 1px solid var(--global-border-color);
+  box-shadow: 0 1px 12px color-mix(in srgb, var(--global-text-color) 8%, transparent);
+}
 
-  &:hover {
-    color: var(--global-accent-color);
+.title-area {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5em;
+}
+
+.top-nav {
+  width: 100%;
+}
+
+.top-nav-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0.85em 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.1em 1.6em;
+  justify-content: flex-end;
+}
+
+.top-nav-item {
+  margin: 0;
+
+  a {
+    color: var(--global-text-color);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    padding-bottom: 3px;
+    border-bottom: 2px solid transparent;
+    transition: color 0.15s ease, border-color 0.15s ease;
+
+    &:hover,
+    &:focus-visible {
+      color: var(--global-accent-color);
+      border-bottom-color: var(--global-accent-color);
+    }
   }
 }
 
@@ -155,6 +489,10 @@
   gap: 0.3em;
   margin-left: 0.6em;
   vertical-align: middle;
+  /* Sit above Basically Basic's .sidebar-toggle-wrapper (z-index:10000) so the
+     swatches stay clickable even where the two overlap. */
+  position: relative;
+  z-index: 10001;
 }
 
 .accent-swatch {
@@ -239,4 +577,559 @@
   border: 1px solid var(--global-border-color);
   background-color: var(--global-code-bg-color);
   font-size: 0.9em;
+}
+
+/* ==========================================================================
+   PORTFOLIO redesign — accent-driven feature rows + grouped grid cards.
+   Visuals are generated (gradient banner + monogram) so no image files are
+   needed, and everything derives from --global-accent-color so the black-&-
+   white base keeps its single "splash" of color in both light and dark.
+   ========================================================================== */
+.pf-group-title {
+  margin: 1.75em 0 0.85em;
+  padding-bottom: 0.3em;
+  border-bottom: 2px solid color-mix(in srgb, currentColor 45%, var(--global-border-color));
+}
+
+/* Zero-specificity fallback so a `.sub-{hue}` modifier (see palette @each) always wins. */
+:where(.pf-group-title) {
+  color: var(--global-text-color);
+}
+
+/* Shared gradient banner + monogram */
+.pf-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(135deg,
+    var(--global-accent-color),
+    color-mix(in srgb, var(--global-accent-color), black 38%));
+
+  picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;   /* show the whole figure, no crop (monogram fallback has no img) */
+  }
+}
+
+/* Media banners: the box follows the image's own aspect ratio (no fixed tile, no
+   letterboxing) on a clean neutral panel — it fills naturally and stays correct if the
+   text column's length changes. A max-height only clamps unusually tall/portrait sources,
+   where object-fit: cover crops rather than leaving the card absurdly tall. */
+.pf-banner--media {
+  background: var(--global-code-bg-color);
+  padding: 0.5em;
+
+  picture {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  img {
+    height: auto;
+    max-height: 65vh;      /* viewport-relative so a full-width desktop image isn't clamped */
+    object-fit: cover;
+  }
+}
+
+.pf-monogram {
+  color: #fff;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  opacity: 0.96;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+/* Shared card/feature body bits */
+.pf-title {
+  margin: 0 0 0.35em;
+  font-size: 1.15em;
+  line-height: 1.25;
+  color: var(--global-text-color);
+}
+
+.pf-meta {
+  margin: 0 0 0.85em;
+  font-size: 0.82em;
+  font-style: italic;
+  color: var(--global-text-color-lighter);
+}
+
+.pf-content {
+  margin: 0 0 0.9em;
+  color: var(--global-text-color-light);
+  font-size: 0.85rem;      /* small text so the abstract reads quickly */
+  line-height: 1.55;
+
+  p {
+    margin: 0 0 0.65em;
+  }
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.pf-badges {
+  list-style: none;
+  margin: 0 0 1em;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em;
+}
+
+/* Base chip (default forest); `.badge--{hue}` modifiers recolour it (see palette @each). */
+.badge {
+  display: inline-block;
+  font-size: 0.72em;
+  font-weight: 600;
+  padding: 0.2em 0.65em;
+  border-radius: 999px;
+  color: var(--global-accent-color);
+  background: color-mix(in srgb, var(--global-accent-color) 15%, transparent);
+  border: 1px solid color-mix(in srgb, var(--global-accent-color) 30%, transparent);
+}
+
+.pf-links {
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+
+  .btn--pf {
+    padding: 0.4em 0.9em;
+    font-size: 0.82em;
+  }
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--global-accent-color);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--global-accent-color) 45%, transparent);
+
+  &:hover {
+    background: var(--global-accent-color-alpha);
+    color: var(--global-accent-color-dark);
+  }
+}
+
+/* Two-box cards: LEFT image (links to the primary link), RIGHT info. Consistent
+   image-left layout (no alternation). The image fills its box on both axes. */
+.portfolio-features {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75em;
+  margin-bottom: 0.5em;
+}
+
+.portfolio-feature {
+  display: flex;
+  flex-direction: column;   /* mobile: image on top, info below */
+  overflow: hidden;
+  border: 1px solid var(--global-border-color);
+  border-radius: $border-radius;
+  background: var(--global-sidebar-bg-color);
+
+  /* The media column: either the <a> wrapper or the bare .pf-banner (monogram fallback). */
+  > .pf-media-link { display: block; }
+
+  /* Monogram fallback (no image): a fixed, centred tile. */
+  > .pf-media-link,
+  > .pf-banner {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    line-height: 0;
+    font-size: 2.2em;       /* monogram size */
+  }
+
+  /* Real images: no fixed shape — the box follows the image's own aspect ratio. */
+  > .pf-media-link:has(.pf-banner--media),
+  > .pf-banner--media {
+    aspect-ratio: auto;
+  }
+
+  /* The banner div fills the media column fully (monogram case; media overrides below). */
+  > .pf-media-link > .pf-banner {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: auto;
+  }
+
+  > .pf-media-link > .pf-banner--media {
+    height: auto;
+  }
+
+  .pf-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    padding: 1.5em 1.75em;   /* bigger box */
+  }
+
+  /* Square figures opt in with `square: true` in front matter — a side-by-side split suits
+     their compact ratio. Everything else (the default: landscape figures) stays a full-width
+     top image at every size, so a wide figure reads wide instead of being squeezed into a
+     narrow column with dead space below it. */
+  &.portfolio-feature--split {
+    @include breakpoint($medium) {
+      flex-direction: row;
+
+      > .pf-media-link,
+      > .pf-banner {
+        flex: 0 0 48%;
+        width: auto;
+        aspect-ratio: auto;
+        min-height: 20rem;     /* monogram fallback: keep it large even when the text is short */
+        align-self: stretch;   /* monogram fallback: match the row's full height */
+      }
+
+      /* Real images: size to their own rendered height, not the text column's — so this
+         keeps working correctly if the text is shortened later. */
+      > .pf-media-link:has(.pf-banner--media),
+      > .pf-banner--media {
+        min-height: 0;
+        align-self: flex-start;
+      }
+    }
+  }
+}
+
+/* Grid cards (secondary projects) — sit inside the existing .entries-grid */
+.portfolio-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid var(--global-border-color);
+  border-radius: $border-radius;
+  background: var(--global-sidebar-bg-color);
+
+  .pf-banner {
+    min-height: 80px;      /* monogram fallback floor */
+    font-size: 1.5em;
+  }
+
+  .pf-banner--media {
+    min-height: 0;         /* real images: size to their own aspect ratio */
+  }
+
+  .pf-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    padding: 1em 1.15em 1.2em;
+  }
+}
+
+/* Neutralize the base .entry border/spacing when cards live in the grid. */
+.entries-grid .portfolio-card {
+  margin: 0;
+}
+
+/* Coloured accent bar + hover lift/glow (category hue via `.cat-{hue}` on the article). */
+.portfolio-feature,
+.portfolio-card,
+.course-card,
+.award-card {
+  border-top: 3px solid var(--card-accent);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px color-mix(in srgb, var(--card-accent) 20%, transparent);
+  }
+}
+
+/* ==========================================================================
+   HONOURS & LEADERSHIP (/honours/) — award stat-cards + leadership timeline.
+   ========================================================================== */
+.awards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25em;
+  margin: 0.4em 0 0;
+
+  @include breakpoint($medium) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.award-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.6em 1.4em;
+  border: 1px solid var(--global-border-color);
+  border-radius: $border-radius;
+  background: linear-gradient(180deg,
+    color-mix(in srgb, var(--card-accent) 9%, var(--global-sidebar-bg-color)),
+    var(--global-sidebar-bg-color));
+}
+
+.award-icon {
+  font-size: 1.5rem;
+  color: var(--card-accent);
+  margin-bottom: 0.35em;
+}
+
+.award-stat {
+  font-family: "Lora", Georgia, serif;
+  font-size: 2.6rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--card-accent);
+}
+
+.award-title {
+  margin: 0.5em 0 0.25em;
+  font-size: 1rem;
+  color: var(--global-text-color);
+}
+
+.award-detail {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--global-text-color-light);
+}
+
+.award-year {
+  margin: 0.7em 0 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--global-text-color-lighter);
+}
+
+/* Leadership timeline */
+.timeline {
+  position: relative;
+  margin: 0.6em 0 0;
+  padding-left: 1.6em;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 0.34em;
+  top: 0.5em;
+  bottom: 0.6em;
+  width: 2px;
+  background: var(--global-border-color);
+}
+
+.timeline-item {
+  position: relative;
+  padding: 0 0 1.6em 0.7em;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: -1.34em;
+    top: 0.35em;
+    width: 0.7em;
+    height: 0.7em;
+    border-radius: 50%;
+    background: var(--card-accent);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--card-accent) 25%, transparent);
+  }
+
+  &:last-child { padding-bottom: 0; }
+}
+
+.timeline-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1em;
+  flex-wrap: wrap;
+}
+
+.timeline-role {
+  font-weight: 700;
+  color: var(--global-text-color);
+}
+
+.timeline-date {
+  font-family: $monospace-font-family;
+  font-size: 0.74em;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--global-text-color-lighter);
+  white-space: nowrap;
+}
+
+.timeline-org {
+  margin-top: 0.1em;
+  font-weight: 600;
+  font-size: 0.92em;
+  color: var(--card-accent);
+}
+
+.timeline-desc {
+  margin: 0.45em 0 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--global-text-color-light);
+}
+
+/* ==========================================================================
+   COURSES — Maxime-style tile grid (/courses/).
+   ========================================================================== */
+.courses-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25em;
+
+  @include breakpoint($medium) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include breakpoint($large) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.course-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.15em 1.25em 1.2em;
+  border: 1px solid var(--global-border-color);
+  border-radius: $border-radius;
+  background: var(--global-sidebar-bg-color);
+}
+
+.entry-content .course-title {
+  margin: 0 0 0.25em;
+  font-size: 1.02em;
+  font-family: $base-font-family; /* strong sans title, not Playfair */
+  color: var(--global-text-color);
+}
+
+.course-meta {
+  margin: 0 0 0.65em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--card-accent);
+}
+
+.course-desc {
+  margin: 0 0 0.9em;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--global-text-color-light);
+}
+
+.course-tags {
+  margin-top: auto;
+  margin-bottom: 0;
+}
+
+.course-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9em;
+  margin-top: 0.7em;
+  font-size: 0.8em;
+
+  a {
+    color: var(--card-accent);
+    text-decoration: none;
+
+    &:hover { text-decoration: underline; }
+  }
+}
+
+/* ==========================================================================
+   WORK EXPERIENCE — two-column timeline grid on the About page.
+   ========================================================================== */
+.work-exp {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.6em 2.5em;
+  margin: 0.5em 0 0;
+
+  @include breakpoint($medium) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.exp-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1em;
+}
+
+.exp-logo {
+  flex: 0 0 auto;
+  width: 3.4em;
+  height: 3.4em;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid var(--global-border-color);
+  border-radius: $border-radius;
+  background: var(--global-code-bg-color);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 0.3em;
+  }
+}
+
+.exp-monogram {
+  color: var(--global-accent-color);
+  font-weight: 800;
+  font-size: 1.05em;
+  letter-spacing: 0.02em;
+}
+
+.exp-info {
+  min-width: 0;
+}
+
+.exp-company {
+  margin: 0;
+  font-size: 1.05em;
+  color: var(--global-text-color); /* neutral, not the forest h3 default */
+}
+
+.exp-role {
+  margin: 0.1em 0 0;
+  color: var(--global-text-color-light);
+}
+
+.exp-date {
+  margin: 0.45em 0 0;
+  font-size: 0.76em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--global-text-color-lighter);
+}
+
+.exp-present {
+  color: var(--global-accent-color);
+  font-weight: 700;
+}
+
+.exp-desc {
+  margin: 0.5em 0 0;
+  font-size: 0.9em;
+  color: var(--global-text-color-light);
 }

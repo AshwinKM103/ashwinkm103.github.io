@@ -1,0 +1,23 @@
+{% comment %}
+  One course tile: strong title → meta row → 1–2 line description → coloured tag chips →
+  optional tiny link row. Accent hue comes from the course's group. Expects `course`, `hue`.
+{% endcomment %}
+{% assign c = include.course %}
+{%- assign chue = include.hue | default: "green" -%}
+<article class="course-card cat-{{ chue }}">
+  <h3 class="course-title">{{ c.title }}</h3>
+  {% if c.meta %}<p class="course-meta">{{ c.meta }}</p>{% endif %}
+  {% if c.description %}<p class="course-desc">{{ c.description }}</p>{% endif %}
+  {% if c.tags %}
+    <ul class="pf-badges course-tags">
+      {% for t in c.tags %}<li class="badge badge--{{ chue }}">{{ t }}</li>{% endfor %}
+    </ul>
+  {% endif %}
+  {% if c.links %}
+    <div class="course-links">
+      {% if c.links.syllabus %}<a href="{{ c.links.syllabus }}">Syllabus</a>{% endif %}
+      {% if c.links.report %}<a href="{{ c.links.report }}">Project report</a>{% endif %}
+      {% if c.links.code %}<a href="{{ c.links.code }}">Code</a>{% endif %}
+    </div>
+  {% endif %}
+</article>

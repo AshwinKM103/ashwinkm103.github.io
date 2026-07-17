@@ -1,0 +1,34 @@
+{% comment %}
+  Two-box entry: LEFT image (linked to the entry's most-important "primary" link), RIGHT info —
+  title, meta, a short blurb (summary), coloured tech chips, and link buttons. The card takes a
+  category hue (from its first tech tag) for its accent bar + hover glow. Shared by Portfolio + Talks.
+{% endcomment %}
+{% assign p = include.post %}
+{%- assign prio = "paper,project,slides,code,demo,model,dataset,poster,video,notes" | split: "," -%}
+{%- assign primary = "" -%}
+{%- for k in prio -%}
+  {%- if primary == "" and p.links[k] -%}{%- assign primary = p.links[k] -%}{%- endif -%}
+{%- endfor -%}
+{%- assign chue = "green" -%}
+{%- if p.tech and p.tech[0] -%}{%- assign k0 = p.tech[0] | downcase -%}{%- assign chue = site.data.tag_colors[k0] | default: "green" -%}{%- endif -%}
+<article class="portfolio-feature cat-{{ chue }}{% if p.square %} portfolio-feature--split{% endif %}">
+  {%- if primary != "" -%}
+    <a class="pf-media-link" href="{% if primary contains '://' %}{{ primary }}{% else %}{{ primary | relative_url }}{% endif %}"{% if primary contains '://' %} target="_blank" rel="noopener"{% endif %} aria-label="{{ p.title | escape }}">
+      {% include pf-banner.html post=p %}
+    </a>
+  {%- else -%}
+    {% include pf-banner.html post=p %}
+  {%- endif -%}
+  <div class="pf-body">
+    <h3 class="pf-title">{{ p.title }}</h3>
+    {% if p.meta %}<p class="pf-meta">{{ p.meta }}</p>{% endif %}
+    <div class="pf-content">{{ p.content }}</div>
+    {% comment %}(full abstract in small text; `summary` kept in front-matter for future use){% endcomment %}
+    {% if p.tech %}
+      <ul class="pf-badges">
+        {% for t in p.tech %}<li class="badge badge--{{ chue }}">{{ t }}</li>{% endfor %}
+      </ul>
+    {% endif %}
+    {% include entry-links.html post=p %}
+  </div>
+</article>

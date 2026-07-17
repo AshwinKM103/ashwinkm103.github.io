@@ -1,0 +1,21 @@
+{% comment %}
+  One project rendered as a compact grid card: a small banner, then title / summary / tech
+  badges / links. Expects `post`. Designed to sit inside a `.entries-grid`.
+{% endcomment %}
+{% assign p = include.post %}
+{%- assign chue = "green" -%}
+{%- if p.tech and p.tech[0] -%}{%- assign k0 = p.tech[0] | downcase -%}{%- assign chue = site.data.tag_colors[k0] | default: "green" -%}{%- endif -%}
+<article class="portfolio-card cat-{{ chue }}">
+  {% include pf-banner.html post=p %}
+  <div class="pf-body">
+    <h3 class="pf-title">{{ p.title }}</h3>
+    {% if p.meta %}<p class="pf-meta">{{ p.meta }}</p>{% endif %}
+    <div class="pf-content">{{ p.content }}</div>
+    {% if p.tech %}
+      <ul class="pf-badges">
+        {% for t in p.tech %}<li class="badge badge--{{ chue }}">{{ t }}</li>{% endfor %}
+      </ul>
+    {% endif %}
+    {% include entry-links.html post=p %}
+  </div>
+</article>

@@ -1,0 +1,15 @@
+{% comment %}
+  Leadership / extracurriculars as a vertical timeline. Driven by _data/leadership.yml.
+{% endcomment %}
+<div class="timeline">
+  {% for l in site.data.leadership %}
+    <div class="timeline-item cat-{{ l.hue | default: 'blue' }}">
+      <div class="timeline-head">
+        <span class="timeline-role">{{ l.role }}</span>
+        {% if l.date %}<span class="timeline-date">{{ l.date }}</span>{% endif %}
+      </div>
+      <div class="timeline-org">{{ l.org }}</div>
+      <p class="timeline-desc">{{ l.desc }}</p>
+    </div>
+  {% endfor %}
+</div>

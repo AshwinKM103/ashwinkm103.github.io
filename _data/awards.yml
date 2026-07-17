@@ -1,0 +1,21 @@
+# Awards shown as stat-cards on /honours/ (rendered by _includes/award-card.html).
+- stat: "30th / 1500"
+  title: "World Scholar's Cup — Global Round, Manila"
+  detail: "Won 8 Gold and 5 Silver medals among 1,500 scholars from 30 countries; qualified for the Tournament of Champions at Yale University."
+  year: "2019"
+  icon: "fas fa-trophy"
+  hue: rose
+
+- stat: "Rank 55"
+  title: "National Talent Search Examination (NTSE)"
+  detail: "Stage-I awardee — ranked 55 of ~900,000 students in one of India's most competitive scholarship exams."
+  year: "2021"
+  icon: "fas fa-medal"
+  hue: amber
+
+- stat: "Top 4%"
+  title: "Kishore Vaigyanik Protsahan Yojana (KVPY)"
+  detail: "Placed in the top 4% of the SA stream — a national fellowship for scientific aptitude and research potential."
+  year: "2021"
+  icon: "fas fa-award"
+  hue: violet

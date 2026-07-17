@@ -52,11 +52,16 @@ a img.align-left {
    Sidebar Pusher
    ========================================================================== */
 
+/* When the right-hand nav drawer opens, compress the content into the space that
+   remains instead of translating it off-screen, so nothing gets cut out. The freed
+   strip on the right is where the fixed drawer sits. On narrow phones there isn't
+   room to compress, so the drawer simply overlays (no width change) below $medium. */
 .is--pushed {
-  transform: translateX(1 * $sidebar-width);
-  transform-origin: right;
+  @include breakpoint($medium) {
+    width: calc(100% - #{$sidebar-width});
+  }
 
   @include breakpoint($large) {
-    transform: translateX(1.5 * $sidebar-width);
+    width: calc(100% - #{1.5 * $sidebar-width});
   }
 }

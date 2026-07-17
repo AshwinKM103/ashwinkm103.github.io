@@ -44,7 +44,5 @@ t:
   cv_volunteer: "Volunteer"
   cv_work: "Work"
 
-# Google Fonts (Basically Basic's signature typography). Loaded in _includes/head.html.
+# Fonts are self-hosted (Inter + Playfair Display, see _sass/_academic.scss). No Google Fonts.
 google_fonts:
-  - name: "Fira Sans"
-    weights: "400,400i,600,600i"

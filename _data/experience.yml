@@ -1,0 +1,18 @@
+# Work experience shown on the About page (rendered by _includes/work-experience.html).
+# Leave `end` blank for a current role (renders a green "Present"). `logo` optional
+# (path under /images/…); falls back to a monogram tile.
+- company: "Zenteiq AI"
+  role: "ML Research Engineer"
+  start: "May 2025"
+  end: "Dec 2025"
+  monogram: "Z"
+  logo: "/images/logos/zenteiq-ai.png"
+  description: "Built Learn–Master–Teach Tuning, a staged framework for LLM mathematical reasoning, and shipped it as MentorX — piloted with ~50 government-school students."
+
+- company: "Energy Informatics Lab, IISc"
+  role: "ML Research Intern"
+  start: "May 2025"
+  end: "Jul 2025"
+  monogram: "EI"
+  logo: "/images/logos/iisc.svg"
+  description: "Built a controlled anomaly-injection framework and benchmarked classical detectors (IQR, LOF, Isolation Forest) on electricity-consumption time series."

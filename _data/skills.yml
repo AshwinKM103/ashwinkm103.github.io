@@ -1,0 +1,41 @@
+# Skills shown on the About page (rendered by _includes/skills.html), grouped by area.
+# Each group has a `hue` (category colour). Each item: `name`, optional `icon` (a filename,
+# with extension, of a self-hosted logo in assets/logos/ — svg or png), optional `color`
+# (brand hex, used as the icon's tile background). Items without an icon render as a plain
+# coloured text chip in the group hue.
+- name: "Programming & Core ML"
+  hue: teal
+  items:
+    - { name: "Python", icon: python.svg, color: "#3776AB" }
+    - { name: "PyTorch", icon: pytorch.svg, color: "#EE4C2C" }
+    - { name: "HuggingFace", icon: huggingface.svg, color: "#FF9D00" }
+    - { name: "LLM Routing" }
+    - { name: "Multi-Fidelity Systems" }
+
+- name: "LLMs & Agentic Systems"
+  hue: green
+  items:
+    - { name: "LangChain", icon: langchain.svg, color: "#3FAE9F" }
+    - { name: "PEFT" }
+    - { name: "LangGraph", icon: langgraph.svg, color: "#4A9EE8" }
+    - { name: "vLLM", icon: vllm.svg, color: "#30A2FF" }
+    - { name: "Unsloth", icon: unsloth.png, color: "#14B789" }
+
+- name: "Reinforcement Learning"
+  hue: amber
+  items:
+    - { name: "Multi-Armed Bandits" }
+    - { name: "TRL" }
+    - { name: "OpenRLHF" }
+    - { name: "Gymnasium", icon: gymnasium.svg, color: "#5B6B7C" }
+    - { name: "MuJoCo" }
+
+- name: "Systems & Infrastructure"
+  hue: blue
+  items:
+    - { name: "AWS Cloud", icon: amazonwebservices.svg, color: "#FF9900" }
+    - { name: "Docker", icon: docker.svg, color: "#2496ED" }
+    - { name: "Ray", icon: ray.svg, color: "#028CF0" }
+    - { name: "Git", icon: git.svg, color: "#F05032" }
+    - { name: "Weights & Biases", icon: weightsandbiases.svg, color: "#FFBE00" }
+    - { name: "Efficient Inference" }
