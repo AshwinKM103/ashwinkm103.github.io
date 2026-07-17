@@ -13,18 +13,12 @@ links:
 ---
 
 Adapting language models to specialized domains usually means bi-level meta-learning, where
-cross-task generalization and task-specific adaptation are coupled inside a single nested
-optimization. Under heterogeneous tasks, this coupling causes gradient interference: conflicting
-updates cancel each other, and the model settles into generic compromise solutions that never
-truly specialize. FOCAL (Foundation-Oriented Cognitive Adaptation Learning) unrolls that loop
-into three temporally independent stages, echoing the cognitive-science principle that mastery
-precedes transfer. First, a prompt-conditioned hypernetwork generates LoRA adapters directly from
-task context, consolidating foundations free of task-specific pressure. Second, a task-aware
-conditional VAE aligns those generalized weights toward target semantics using task vectors.
-Third, refinement becomes a decision problem: an RL-trained policy selects among test-time
-learning, LoRA mixing, test-time scaling, and latent modification for each task. On Qwen2.5-0.5B
-and 1.5B, FOCAL outperformed MAML-style baselines both in-domain and out-of-distribution, and the
-analyses explain why — lower gradient conflict, 6.5× sparser adaptations, and per-domain weight
-signatures that stay visually distinct where MAML's overlap. Ablations that skip stages forfeit
-most of the improvement, supporting the ordering itself as the contribution. Built with three
-teammates; under review at ICML.
+cross-task generalization and task-specific adaptation are coupled in a single nested
+optimization. Under heterogeneous tasks this coupling causes gradient interference: conflicting
+updates cancel, and the model settles into generic compromises that never truly specialize. FOCAL
+unrolls that loop into three temporally independent stages, echoing the principle that mastery
+precedes transfer — a hypernetwork first generates LoRA adapters from task context, a conditional
+VAE aligns them toward target semantics, and an RL-trained policy selects a test-time refinement
+strategy per task. On Qwen2.5-0.5B and 1.5B it beats MAML-style baselines in- and out-of-domain,
+with lower gradient conflict and 6.5× sparser adaptations. Built with three teammates; under
+review at ICML.

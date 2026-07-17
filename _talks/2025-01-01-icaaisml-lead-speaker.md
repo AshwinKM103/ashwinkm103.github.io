@@ -19,17 +19,12 @@ links:
   code: "https://github.com/AshwinKM103/Mentor-X"
 ---
 
-Most LLM adaptation treats expertise as the output of one monolithic optimization, entangling
-knowledge consolidation, task alignment, and generalization in a single objective. MentorX starts
-from a premise borrowed from cognitive science: expertise develops through temporally separated
-phases of learning, mastery, and teaching. We formalized this as Learn–Master–Teach Tuning (LMT²),
-a staged adaptation framework grounded in theories from Piaget's equilibration to Vygotsky's zone
-of proximal development, and instantiated it in MentorX, an interactive teaching assistant built on
-Llama-3.1-8B and trained chapter-wise on roughly 17,500 structured examples spanning 35 chapters of
-CBSE mathematics. My modules were the ones where the model acts as learner and teacher: a
-feedback-driven practice loop in which the model generates, receives evaluation, and refines its
-responses; a learning-by-teaching stage cast as multi-turn RL, with a reward that balances solution
-correctness against pedagogical discipline so the model guides rather than leaks answers; and a
-user-memory module that carries individual learners' state forward across sessions. Staged
-fine-tuning lifted accuracy from 23.9% to 32.2% on a 2,617-question evaluation, with interactive
-refinement adding a further 2.8 points. The framework paper is under review at ICLR 2026.
+Most LLM adaptation treats expertise as one monolithic optimization, entangling knowledge
+consolidation, task alignment, and generalization at once. MentorX starts from a premise borrowed
+from cognitive science: expertise develops through temporally separated phases of learning,
+mastery, and teaching. We formalized this as Learn–Master–Teach Tuning (LMT²) and instantiated it
+in MentorX, a teaching assistant on Llama-3.1-8B trained over 35 chapters of CBSE mathematics. My
+modules were the ones where the model acts as learner and teacher: a feedback-driven practice loop,
+and a learning-by-teaching stage cast as multi-turn RL, with a reward balancing solution
+correctness against pedagogical discipline so the model guides rather than leaks answers. Staged
+tuning lifted accuracy from 23.9% to 32.2%. The paper is under review at ICLR 2026.

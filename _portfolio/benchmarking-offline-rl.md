@@ -16,15 +16,11 @@ links:
 
 Decision Transformer reframes offline reinforcement learning as sequence modeling: rather than
 learning value functions or policy gradients, a GPT-style transformer predicts actions
-conditioned on returns-to-go, sidestepping the bootstrapping instability and value
-overestimation that plague offline RL. Our goal was to reproduce and stress-test this idea, and
-we immediately hit a practical wall — the original D4RL and Atari replay datasets have been
-deprecated. We rebuilt the entire pipeline around Minari, generating expert trajectories with
-Soft Actor-Critic, rewriting data loading and preprocessing around returns-to-go computation and
-normalization, and constructing a custom MuJoCo rendering pipeline for evaluation. Benchmarked
-against percentile behavior cloning on HalfCheetah, Hopper, Walker2D, and Reacher across three
-dataset qualities, Decision Transformer consistently matched or beat behavior cloning on
-locomotion tasks, but underperformed on Reacher's fine motor control. The sharper finding was
-data sensitivity: on Atari, with only ten trajectories available, training loss fell steadily
-while actual returns stayed far below the original agent's — the architecture is only as strong
-as the breadth of trajectories behind it. Completed with two teammates for an AI-ML course at IISc.
+conditioned on returns-to-go, sidestepping the value overestimation that plagues offline RL. We
+aimed to reproduce and stress-test it, but the original D4RL and Atari datasets had been
+deprecated — so we rebuilt the pipeline around Minari, generating expert trajectories with Soft
+Actor-Critic and custom MuJoCo rendering. Benchmarked against percentile behavior cloning across
+locomotion tasks, the transformer matched or beat cloning on Hopper and Walker but lagged on
+Reacher's fine motor control. The sharper finding was data sensitivity: with only ten Atari
+trajectories, training loss fell steadily while returns never recovered. An AI-ML course project
+with two teammates.
