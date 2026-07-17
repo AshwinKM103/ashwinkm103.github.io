@@ -9,7 +9,8 @@ banner_media: /images/portfolio/focal.webp
 tech: ["LLMs", "Meta-Learning", "LoRA", "Hypernetworks", "RL"]
 meta: "Supervised by Prof. Shalabh Bhatnagar · IISc · under review at ICML"
 links:
-  paper: "/files/focal-paper/focal-paper.pdf"
+  paper: "/files/focal-research/focal-icml-2026-paper.pdf"
+  slides: "/files/focal-research/focal-rl-presentation.pdf"
 ---
 
 Adapting language models to specialized domains usually means bi-level meta-learning, where

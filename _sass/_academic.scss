@@ -629,17 +629,6 @@ $section-hues: green, blue, violet, amber, rose, teal;
   }
 }
 
-.btn--ghost {
-  background: transparent;
-  color: var(--global-accent-color);
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--global-accent-color) 45%, transparent);
-
-  &:hover {
-    background: var(--global-accent-color-alpha);
-    color: var(--global-accent-color-dark);
-  }
-}
-
 /* Two-box cards: LEFT image (links to the primary link), RIGHT info. Consistent
    image-left layout (no alternation). The image fills its box on both axes. */
 .portfolio-features {
