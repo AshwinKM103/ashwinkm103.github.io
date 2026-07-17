@@ -11,14 +11,14 @@ main:
   - title: "About"
     url: /
 
-  - title: "Talks"
-    url: /talks/
+  - title: "Internships"
+    url: /internships/
 
   - title: "Projects"
     url: /portfolio/
 
-  - title: "Internships"
-    url: /internships/
+  - title: "Talks"
+    url: /talks/
 
   - title: "Courses"
     url: /courses/
