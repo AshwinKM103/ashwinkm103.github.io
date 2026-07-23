@@ -554,7 +554,7 @@ $section-hues: green, blue, violet, amber, rose, teal;
   img {
     height: auto;
     max-height: 65vh;      /* viewport-relative so a full-width desktop image isn't clamped */
-    object-fit: cover;
+    object-fit: contain;   /* show the whole figure — never crop a text-heavy diagram */
   }
 }
 
@@ -843,7 +843,7 @@ $section-hues: green, blue, violet, amber, rose, teal;
   &::before {
     content: "";
     position: absolute;
-    left: -1.34em;
+    left: -1.55em;
     top: 0.35em;
     width: 0.7em;
     height: 0.7em;

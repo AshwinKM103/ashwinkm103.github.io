@@ -5,7 +5,6 @@ collection: portfolio
 section: internships
 order: 2
 monogram: "EI"
-summary: "Injects **known anomalies** into smart-meter time series to manufacture ground truth, then benchmarks IQR, LOF, Isolation Forest and Modified Z-Score — measuring **which classical detectors actually fire**, and where."
 summary: "Injected known anomalies into smart-meter data to build ground truth, then measured which classical detectors actually find them."
 tech: ["Python", "Time Series", "scikit-learn", "Kalman Filtering"]
 meta: "ML Research Intern · Energy Informatics Lab, IISc · May–Jul 2025"

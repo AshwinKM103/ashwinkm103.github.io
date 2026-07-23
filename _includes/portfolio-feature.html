@@ -11,7 +11,7 @@
 {%- endfor -%}
 {%- assign chue = "green" -%}
 {%- if p.tech and p.tech[0] -%}{%- assign k0 = p.tech[0] | downcase -%}{%- assign chue = site.data.tag_colors[k0] | default: "green" -%}{%- endif -%}
-<article class="portfolio-feature cat-{{ chue }}{% if p.square %} portfolio-feature--split{% endif %}">
+<article id="{{ p.path | split: '/' | last | remove: '.md' }}" class="portfolio-feature cat-{{ chue }}{% if p.square %} portfolio-feature--split{% endif %}">
   {%- if primary != "" -%}
     <a class="pf-media-link" href="{% if primary contains '://' %}{{ primary }}{% else %}{{ primary | relative_url }}{% endif %}"{% if primary contains '://' %} target="_blank" rel="noopener"{% endif %} aria-label="{{ p.title | escape }}">
       {% include pf-banner.html post=p %}
