@@ -5,7 +5,7 @@ section: research
 order: 3
 monogram: "ORL"
 summary: "Reproduces and stress-tests **offline RL as sequence modelling**, rebuilt on Minari + MuJoCo after D4RL's deprecation. Matches or beats behaviour cloning on locomotion; exposes sharp **data-sensitivity** limits on Atari."
-banner_media: /images/portfolio/decision-transformer.webp
+banner_media: /images/portfolio/decision-transformer-clean.webp
 tech: ["PyTorch", "Offline RL", "MuJoCo", "Minari", "Decision Transformer"]
 meta: "Course project · IISc · Jan–Apr 2025"
 links:

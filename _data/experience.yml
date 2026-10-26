@@ -15,7 +15,7 @@
   end: "Dec 2026"
   monogram: "Q"
   logo: "/images/logos/iisc.svg"
-  description: "Designed Quest TwinOps for buyers managing turbines across suppliers and manufacturers supporting equipment across customer sites; built telemetry, turbine schematics, and access-control components."
+  description: "Investigating multimodal memory for turbine digital twins: how past hypotheses and observed outcomes can guide later retrieval and reasoning. Built telemetry replay and turbine visualization as the experimental foundation."
 
 - company: "Energy Informatics Lab, IISc"
   role: "ML Research Intern"

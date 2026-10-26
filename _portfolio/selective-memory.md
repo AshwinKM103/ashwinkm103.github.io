@@ -7,7 +7,7 @@ order: 0
 monogram: "STM"
 summary: "A memory adapter for frozen Mamba2 separates recent-context processing from selective reads of encoded tokens in distant history, investigating representation and access bottlenecks in recurrent models. Three paired runs show a 2.82% reduction in 32K PG-19 perplexity."
 tech: ["Recurrent Language Models", "Long-Context Memory", "Sparse Attention", "Mamba2", "Representation Learning"]
-meta: "Supervised by Prof. Shirish Shevade · Aug 2026 – Dec 2026"
+meta: "Aug 2026 – Dec 2026"
 ---
 
 Recurrent language models must preserve distinctions in their history and make relevant details

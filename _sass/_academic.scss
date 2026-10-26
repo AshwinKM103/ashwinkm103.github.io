@@ -537,13 +537,10 @@ $section-hues: green, blue, violet, amber, rose, teal;
   }
 }
 
-/* Media banners: the box follows the image's own aspect ratio (no fixed tile, no
-   letterboxing) on a clean neutral panel — it fills naturally and stays correct if the
-   text column's length changes. A max-height only clamps unusually tall/portrait sources,
-   where object-fit: cover crops rather than leaving the card absurdly tall. */
+/* Let each diagram fill its card at its native aspect ratio. */
 .pf-banner--media {
   background: var(--global-code-bg-color);
-  padding: 0.5em;
+  padding: 0;
 
   picture {
     display: block;
@@ -553,7 +550,7 @@ $section-hues: green, blue, violet, amber, rose, teal;
 
   img {
     height: auto;
-    max-height: 65vh;      /* viewport-relative so a full-width desktop image isn't clamped */
+    max-height: none;
     object-fit: contain;   /* show the whole figure — never crop a text-heavy diagram */
   }
 }
@@ -584,11 +581,11 @@ $section-hues: green, blue, violet, amber, rose, teal;
 .pf-content {
   margin: 0 0 0.9em;
   color: var(--global-text-color-light);
-  font-size: 0.85rem;      /* small text so the abstract reads quickly */
-  line-height: 1.55;
+  font-size: 0.85rem;
+  line-height: 1.7;
 
   p {
-    margin: 0 0 0.65em;
+    margin: 0 0 1.15em;
   }
 
   > *:last-child {
