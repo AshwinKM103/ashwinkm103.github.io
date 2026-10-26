@@ -1,5 +1,6 @@
 ---
 title: "Beyond Recurrent State: Selective Memory for Mamba"
+banner_media: /images/portfolio/selective-memory.webp
 collection: portfolio
 section: research
 order: 0

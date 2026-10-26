@@ -1,5 +1,6 @@
 ---
 title: "Quest TwinOps"
+banner_media: /images/portfolio/quest-twinops.webp
 collection: portfolio
 section: internships
 order: 0

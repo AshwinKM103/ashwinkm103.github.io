@@ -1,14 +1,6 @@
 # Work experience shown on the About page (rendered by _includes/work-experience.html).
 # Leave `end` blank for a current role (renders a green "Present"). `logo` optional
 # (path under /images/…); falls back to a monogram tile.
-- company: "Quest Lab"
-  role: "Research Intern"
-  start: "Aug 2026"
-  end: "Dec 2026"
-  monogram: "Q"
-  logo: "/images/logos/iisc.svg"
-  description: "Designed Quest TwinOps for buyers managing turbines across suppliers and manufacturers supporting equipment across customer sites; built telemetry, turbine schematics, and access-control components."
-
 - company: "Zenteiq AI"
   role: "ML Research Engineer"
   start: "May 2025"
@@ -16,6 +8,14 @@
   monogram: "Z"
   logo: "/images/logos/zenteiq-ai.png"
   description: "Built Learn–Master–Teach Tuning, a staged framework for LLM mathematical reasoning, and shipped it as MentorX — piloted with ~50 government-school students."
+
+- company: "Quest Lab"
+  role: "Research Intern"
+  start: "Aug 2026"
+  end: "Dec 2026"
+  monogram: "Q"
+  logo: "/images/logos/iisc.svg"
+  description: "Designed Quest TwinOps for buyers managing turbines across suppliers and manufacturers supporting equipment across customer sites; built telemetry, turbine schematics, and access-control components."
 
 - company: "Energy Informatics Lab, IISc"
   role: "ML Research Intern"
