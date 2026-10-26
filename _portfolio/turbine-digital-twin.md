@@ -7,7 +7,7 @@ monogram: "DT"
 excerpt: "A configurable turbine platform connecting real telemetry, scoped fleet access, and evidence-linked AI assistance, with coordinated workflows for manufacturers, buyers, operators, and maintenance teams across organizations and sites."
 summary: "A configurable turbine platform connecting real telemetry, scoped fleet access, and evidence-linked AI assistance, with coordinated workflows for manufacturers, buyers, operators, and maintenance teams across organizations and sites."
 tech: ["Time Series", "Digital Twins", "AI Copilots", "Authorization", "Scientific Software"]
-meta: "Research Intern · Aug–Dec 2026"
+meta: "Research Intern · Aug 2026 – Dec 2026"
 ---
 
 The project addresses the lab’s need for a dependable, customizable digital-twin platform serving
