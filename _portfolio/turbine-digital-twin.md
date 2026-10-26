@@ -5,14 +5,16 @@ collection: portfolio
 section: internships
 order: 0
 monogram: "QTO"
-excerpt: "A turbine digital-twin platform combining interactive schematics, CAD-based 3D visualization, and an AI copilot that connects questions about machine behavior to sensor histories, operating conditions, alarms, and supporting measurements."
-summary: "A turbine digital-twin platform combining interactive schematics, CAD-based 3D visualization, and an AI copilot that connects questions about machine behavior to sensor histories, operating conditions, alarms, and supporting measurements."
-tech: ["Digital Twins", "Turbine Visualization", "AI Copilots", "Time Series", "Multimodal Reasoning"]
+excerpt: "Investigating multimodal memory for turbine digital twins: connecting sensor histories, component geometry, and operating knowledge to support diagnosis, select informative measurements, and adapt the twin through feedback from the physical system."
+summary: "Investigating multimodal memory for turbine digital twins: connecting sensor histories, component geometry, and operating knowledge to support diagnosis, select informative measurements, and adapt the twin through feedback from the physical system."
+tech: ["Digital Twins", "Multimodal Memory", "Adaptive Retrieval", "Diagnostic Reasoning", "Physical Feedback"]
 meta: "Research Intern · QUEST Lab · Aug 2026 – Dec 2026"
 ---
 
-An unusual reading is hard to interpret without knowing where the sensor sits, what the turbine was doing, and whether the measurement is reliable. **Quest TwinOps** brings those views together. Interactive 2D schematics and a CAD-based 3D viewer connect sensor readings to the equipment, with historical trends and data-quality indicators available while inspecting a component.
+A turbine digital twin has to reconcile evidence that describes the same machine in different ways. Sensor streams capture changes over time, CAD and schematics describe physical relationships, and manuals specify operating constraints. **Quest TwinOps** investigates how persistent, multimodal memory can connect these sources and keep earlier experience useful as the turbine's operating conditions change.
 
-The **AI copilot** follows the same workflow. An operator can ask about the turbine's condition, compare two periods, inspect an alarm, or request a chart, then follow up on the evidence already retrieved. Bounded tools fetch the measurements and prepare the charts; the model explains them. Numeric claims are checked against the returned facts, with the asset, time range, units, and freshness kept alongside the answer. Maintenance work orders and monitoring rules are prepared as proposals for review.
+The proposed approach preserves the structure needed to interpret that evidence. Component relations link measurements to equipment; layout-aware representations retain diagram and document structure; similarity retrieval finds relevant operating histories. Recent readings form working context, while stored investigations and consolidated knowledge support longer-term reasoning. Retrieval depends on the component, time interval, and operating regime. A central question is how to preserve informative rare events while revising knowledge that becomes obsolete or rests on an unreliable sensor.
 
-The research question is how a twin should connect **sensor histories, equipment structure, and operating knowledge** as the machine changes. A temperature rise during startup needs different context from the same rise during steady operation. Current work studies how manuals, schematics, and equipment history can supply that context, and how later measurements can help check and revise the twin's interpretation.
+The research vision is a twin that uses this memory to investigate changes in machine behavior. An unexpected temperature rise prompts comparison of plausible explanations and the measurements each would predict. The twin then identifies an observation or approved test that could distinguish them. Subsequent measurements revise its explanation and influence which evidence it retrieves in a similar situation. Choosing what to observe next, and how that feedback should change the twin's memory, are part of the research problem.
+
+The **turbine visualization and AI copilot** provide the experimental foundation. Planned comparisons with stateless interaction and fixed text retrieval will test whether **context-sensitive memory** improves evidence use and diagnostic reasoning across investigations and changing operating regimes.

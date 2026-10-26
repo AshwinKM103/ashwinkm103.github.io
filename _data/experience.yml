@@ -15,7 +15,7 @@
   end: "Dec 2026"
   monogram: "Q"
   logo: "/images/logos/iisc.svg"
-  description: "Built interactive 2D schematics, CAD-based 3D turbine visualization, and an AI copilot for inspecting sensor histories, alarms, and operating conditions with supporting charts and measurements."
+  description: "Investigating multimodal memory for turbine digital twins: how sensor histories, component geometry, and operating knowledge can support diagnosis and adapt through physical feedback. Developed turbine visualization and an AI copilot as the experimental foundation."
 
 - company: "Energy Informatics Lab, IISc"
   role: "ML Research Intern"
