@@ -1,5 +1,5 @@
 ---
-title: "Selective Token Memory for Recurrent Language Models"
+title: "Beyond Recurrent State: Selective Memory for Mamba"
 collection: portfolio
 section: research
 order: 0

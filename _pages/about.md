@@ -19,10 +19,11 @@ a student actually misunderstands across a session. Most of my work since takes 
 seriously. *MentorX* and *FOCAL* treat domain adaptation as a staged process — consolidate a
 foundation, align it to a task, then refine — rather than a single monolithic optimization.
 *LaDRA* lets research agents hand off latent state instead of re-tokenized text. My
-[selective-memory project](/portfolio/#selective-memory) studies how recurrent language models
+project [*Beyond Recurrent State*](/portfolio/#selective-memory) studies how recurrent language models
 can preserve and revisit details in distant context. At **QUEST, IISc**, supervised by
-**Prof. Deepak Subramani**, I work on a [turbine digital-twin platform](/internships/#turbine-digital-twin)
-that brings telemetry, equipment context, and AI-assisted investigation into a shared product vision.
+**Prof. Deepak Subramani**, I work on [Quest TwinOps](/internships/#turbine-digital-twin), a digital-twin platform for
+buyers managing turbines across suppliers, manufacturers supporting their installed equipment,
+and operators investigating machine behavior.
 
 What ties these projects together is a preference for problems whose difficulty is structural
 rather than generative: the answer usually exists, and the question is whether the system can

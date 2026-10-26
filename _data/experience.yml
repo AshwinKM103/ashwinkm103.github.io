@@ -7,7 +7,7 @@
   end: "Dec 2026"
   monogram: "Q"
   logo: "/images/logos/iisc.svg"
-  description: "Developed turbine telemetry, visualization, and access-control components under Prof. Deepak Subramani, supporting a configurable platform for evidence-linked fleet investigation."
+  description: "Designed Quest TwinOps for buyers managing turbines across suppliers and manufacturers supporting equipment across customer sites; built telemetry, turbine schematics, and access-control components."
 
 - company: "Zenteiq AI"
   role: "ML Research Engineer"
@@ -16,3 +16,11 @@
   monogram: "Z"
   logo: "/images/logos/zenteiq-ai.png"
   description: "Built Learn–Master–Teach Tuning, a staged framework for LLM mathematical reasoning, and shipped it as MentorX — piloted with ~50 government-school students."
+
+- company: "Energy Informatics Lab, IISc"
+  role: "ML Research Intern"
+  start: "May 2025"
+  end: "Jul 2025"
+  monogram: "EI"
+  logo: "/images/logos/iisc.svg"
+  description: "Built a controlled anomaly-injection framework and benchmarked classical detectors (IQR, LOF, Isolation Forest) on electricity-consumption time series."
