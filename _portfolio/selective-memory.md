@@ -20,6 +20,6 @@ token representations. Adapting RAMba’s hierarchical sparse attention to a fro
 the design uses selected relevance scores in differentiable fusion weights, connecting those scores
 to prediction loss beyond their role in discrete selection. Across three paired Mamba2-1.3B runs,
 the complete adapter reduced mean 32K PG-19 perplexity by **2.82% relative to local HMM**, with
-improvements at 4K, 8K, 16K, and 32K. These findings support better long-context prediction; the
+improvements at 4K, 8K, 16K, and 32K. These findings support better long-context prediction. The
 broader motivation is memory that lets long-horizon reasoning revisit earlier evidence without
 relying solely on compressed summaries.

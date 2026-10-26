@@ -22,7 +22,7 @@ foundation, align it to a task, then refine — rather than a single monolithic 
 project [*MambaRecall*](/portfolio/#selective-memory) studies how recurrent language models
 can preserve and revisit details in distant context. At **QUEST Lab, IISc**, I work on
 [Quest TwinOps](/internships/#turbine-digital-twin), investigating how multimodal memory can connect
-sensor histories, component geometry, and operating knowledge, and how feedback from the turbine
+sensor histories, turbine schematics, and operating knowledge, and how feedback from the turbine
 should revise its interpretation.
 
 What ties these projects together is a preference for problems whose difficulty is structural

@@ -15,7 +15,7 @@
   end: "Dec 2026"
   monogram: "Q"
   logo: "/images/logos/iisc.svg"
-  description: "Investigating multimodal memory for turbine digital twins: how sensor histories, component geometry, and operating knowledge can support diagnosis and adapt through physical feedback. Developed turbine visualization and an AI copilot as the experimental foundation."
+  description: "Investigating multimodal memory for turbine digital twins: how sensor histories, turbine schematics, and operating knowledge can support diagnosis and adapt through physical feedback. Developed turbine visualization and an AI copilot as the experimental foundation."
 
 - company: "Energy Informatics Lab, IISc"
   role: "ML Research Intern"
