@@ -1,5 +1,5 @@
 ---
-title: "Beyond Recurrent State: Selective Memory for Mamba"
+title: "MambaRecall: Coarse-to-Fine Token Memory"
 banner_media: /images/portfolio/selective-memory.webp
 collection: portfolio
 section: research

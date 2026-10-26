@@ -9,13 +9,13 @@
   logo: "/images/logos/zenteiq-ai.png"
   description: "Built Learn–Master–Teach Tuning, a staged framework for LLM mathematical reasoning, and shipped it as MentorX — piloted with ~50 government-school students."
 
-- company: "Quest Lab"
+- company: "QUEST Lab"
   role: "Research Intern"
   start: "Aug 2026"
   end: "Dec 2026"
   monogram: "Q"
   logo: "/images/logos/iisc.svg"
-  description: "Investigating multimodal memory for turbine digital twins: how past hypotheses and observed outcomes can guide later retrieval and reasoning. Built telemetry replay and turbine visualization as the experimental foundation."
+  description: "Built interactive 2D schematics, CAD-based 3D turbine visualization, and an AI copilot for inspecting sensor histories, alarms, and operating conditions with supporting charts and measurements."
 
 - company: "Energy Informatics Lab, IISc"
   role: "ML Research Intern"

@@ -19,10 +19,10 @@ a student actually misunderstands across a session. Most of my work since takes 
 seriously. *MentorX* and *FOCAL* treat domain adaptation as a staged process — consolidate a
 foundation, align it to a task, then refine — rather than a single monolithic optimization.
 *LaDRA* lets research agents hand off latent state instead of re-tokenized text. My
-project [*Beyond Recurrent State*](/portfolio/#selective-memory) studies how recurrent language models
-can preserve and revisit details in distant context. At **Quest Lab, IISc**, I work on
-[Quest TwinOps](/internships/#turbine-digital-twin), investigating how turbine digital twins can
-connect multimodal evidence to past investigations and use observed outcomes to revise later explanations.
+project [*MambaRecall*](/portfolio/#selective-memory) studies how recurrent language models
+can preserve and revisit details in distant context. At **QUEST Lab, IISc**, I work on
+[Quest TwinOps](/internships/#turbine-digital-twin), combining interactive turbine visualization with
+an AI copilot for inspecting sensor histories, alarms, and operating conditions.
 
 What ties these projects together is a preference for problems whose difficulty is structural
 rather than generative: the answer usually exists, and the question is whether the system can
@@ -78,9 +78,10 @@ My selective-memory project makes this question concrete in a frozen Mamba2 back
 separate recent-context processing from selective reads of encoded tokens in distant chunks,
 then measure whether the added memory improves language modelling. The motivation extends to
 scientific reasoning, where earlier hypotheses and their evidence must remain accessible as an
-investigation develops. At Quest Lab, I am extending this question to investigations of physical systems:
-what should a twin remember about an explanation that failed, and how should that experience
-change the evidence it retrieves or the observation it proposes next?
+investigation develops. At QUEST Lab, the same concern appears in a physical setting:
+a turbine's readings need to stay connected to its components, operating conditions, and equipment
+history. The visualization and AI copilot make that context available while investigating a change
+in machine behavior.
 
 In the long run, I want the reliability of agentic systems to be something we can design for and
 reason about, not something we discover after deployment.
