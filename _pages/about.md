@@ -18,8 +18,11 @@ when a lightweight model suffices and when deeper reasoning is worth its cost, a
 a student actually misunderstands across a session. Most of my work since takes that lesson
 seriously. *MentorX* and *FOCAL* treat domain adaptation as a staged process — consolidate a
 foundation, align it to a task, then refine — rather than a single monolithic optimization.
-*LaDRA* lets research agents hand off latent state instead of re-tokenized text. *IssueOps*
-assigns GitHub issues by weighing a developer's expertise, availability, and current workload.
+*LaDRA* lets research agents hand off latent state instead of re-tokenized text. My
+[selective-memory project](/portfolio/#selective-memory) studies how recurrent language models
+can preserve and revisit details in distant context. At **QUEST, IISc**, supervised by
+**Prof. Deepak Subramani**, I work on a [turbine digital-twin platform](/internships/#turbine-digital-twin)
+that brings telemetry, equipment context, and AI-assisted investigation into a shared product vision.
 
 What ties these projects together is a preference for problems whose difficulty is structural
 rather than generative: the answer usually exists, and the question is whether the system can
@@ -70,6 +73,14 @@ repository's history. This draws me to representation learning in latent space, 
 predictive world models of the *JEPA* line to the KV-cache as a medium of communication, and to
 reinforcement learning as the machinery for decisions whose consequences unfold over long
 horizons, from offline RL as sequence modelling to learning-by-teaching rewards.
+
+My selective-memory project makes this question concrete in a frozen Mamba2 backbone:
+separate recent-context processing from selective reads of encoded tokens in distant chunks,
+then measure whether the added memory improves language modelling. The motivation extends to
+scientific reasoning, where earlier hypotheses and their evidence must remain accessible as an
+investigation develops. At QUEST, the related engineering challenge is to keep measurements,
+equipment identity, data quality, and access permissions attached to the evidence an AI copilot
+uses to explain turbine behavior.
 
 In the long run, I want the reliability of agentic systems to be something we can design for and
 reason about, not something we discover after deployment.
